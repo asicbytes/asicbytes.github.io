@@ -31,14 +31,14 @@
     {
       "degree": "PhD in SoC Design",
       "institution": "IIT Bhubaneswar",
-      "period": "2025 - Present",
+      "period": "Jan 2025 - Dec 2029",
       "logo": "https://via.placeholder.com/50",
       "description": "Focusing on advanced System-on-Chip architectures for low-power and high-performance computing..."
     },
     {
       "degree": "B.Tech in ECE",
       "institution": "XYZ University",
-      "period": "2023 - 2025",
+      "period": "Aug 2012 - May 2016",
       "logo": "https://via.placeholder.com/50",
       "description": "Specialized in VLSI design with a focus on digital and mixed-signal circuits..."
     }
@@ -47,16 +47,14 @@
     {
       "position": "Junior Research Fellow",
       "company": "IIT Bhubaneswar",
-      "period": "Jan 2025 - Present",
-      "duration" : "6 Months",
+      "period": "Apr 2024 - Apr 2025",
       "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
       "description": "Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications..."
     },
     {
       "position": "Summer Intern",
       "company": "XYZ Company",
-      "period": "May 2024 - July 2024",
-      "duration" : "6 Months",
+      "period": "May 2024 - Jul 2024",
       "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
       "description": "Worked on the development of high-speed communication protocols for embedded systems..."
     }
@@ -67,9 +65,11 @@
       "title": "Advanced SoC Architectures for Low-Power AI Applications",
       "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
       "year": 2025,
+      "award": "",
       "links": {
         "paper": "https://example.com/paper1",
-        "github": "https://github.com/asicbytes/soc-ai-lowpower"
+        "github": "https://github.com/asicbytes/soc-ai-lowpower",
+        "presentation": "https://example.com/presentation1"
       }
     },
     {
@@ -77,6 +77,7 @@
       "title": "Energy-Efficient FPGA Designs for Edge Computing",
       "venue": "ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED)",
       "year": 2024,
+      "award": "",
       "links": {
         "paper": "https://example.com/paper2",
         "github": "https://github.com/asicbytes/fpga-edge-computing"
@@ -87,6 +88,7 @@
       "title": "Novel Interconnect Technologies for Next-Generation SoCs",
       "venue": "Design, Automation & Test in Europe Conference & Exhibition (DATE)",
       "year": 2024,
+      "award": "",
       "links": {
         "paper": "https://example.com/paper3"
       }
@@ -96,6 +98,7 @@
       "title": "Optimization Techniques for Energy-Efficient SoC Designs in IoT Applications",
       "venue": "IEEE Internet of Things Journal",
       "year": 2023,
+      "award": "",
       "links": {
         "paper": "https://example.com/paper4",
         "github": "https://github.com/asicbytes/iot-soc-optimization"

@@ -33,7 +33,7 @@
          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
          }
          
-}
+
 
         
       </style>
@@ -59,8 +59,8 @@
             <a href="#publications" class="block py-2 px-4 hover:bg-gray-700">Publications</a>
          </div>
       </nav>
-      <div class="max-w-5xl mx-auto my-3 p-4 grid gap-6 opacity-0 transition-opacity duration-1000 ease-in-out" id="profile">
-         <div class="glassmorphism rounded-lg p-8 flex flex-col md:flex-row items-center md:items-start gap-6">
+      <div class="max-w-5xl mx-auto my-3 p-4 grid gap-6">
+         <div class="glassmorphism rounded-lg p-8 flex flex-col md:flex-row items-center md:items-start gap-6 opacity-0 transition-opacity duration-1000 ease-in-out" id="profile">
             <img data-field="profilePicture" src="" alt="Profile Picture" class="w-32 h-32 md:w-40 md:h-40 shadow-md object-cover rounded-full border-2 border-blue-500">
             <div class="flex-1 text-center md:text-left">
                <h1 class="text-3xl mb-2 brand-name" data-field="name"></h1>
@@ -201,30 +201,35 @@
          
          
          resumeEducation.forEach(edu => {
-             const div = document.createElement('div');
-             div.className = 'flex items-start gap-4';
-             div.innerHTML = `
-                 <img src="${edu.logo}" alt="${edu.institution} Logo" class="w-12 h-12 object-cover rounded">
-                 <div>
-                     <h3 class="text-lg font-semibold text-gray-200">${edu.institution}</h3>
-                     <p class="text-gray-200">${edu.degree}</p>
-                     <p class="text-gray-400">${edu.period}</p>
-                     <p class="mt-2 text-gray-400">${edu.description}</p>
-                 </div>
-             `;
-             fragment.appendChild(div);
-         });
-         educationList.appendChild(fragment);
+    const div = document.createElement('div');
+    div.className = 'flex items-start gap-4';
+    div.innerHTML = `
+        <img src="${edu.logo}" alt="${edu.institution} Logo" class="w-12 h-12 object-cover rounded">
+        <div class="flex-grow">
+            <h3 class="text-lg font-semibold text-gray-200">${edu.institution}</h3>
+            <div class="flex justify-between items-center">
+                <p class="text-gray-200">${edu.degree}</p>
+                <p class="text-gray-200 ml-auto italic">${edu.period}</p>
+            </div>
+            <p class="mt-2 text-gray-400">${edu.description}</p>
+        </div>
+    `;
+    fragment.appendChild(div);
+});
+educationList.appendChild(fragment);
+
          
          resumeExperience.forEach(exp => {
              const div = document.createElement('div');
              div.className = 'flex items-start gap-4';
              div.innerHTML = `
                  <img src="${exp.logo}" alt="${exp.company} Logo" class="w-12 h-12 object-cover rounded">
-                 <div>
-                     <h3 class="text-lg font-semibold text-gray-300">${exp.position}</h3>
-                     <p class="text-gray-300">${exp.company} </p>
-                     <p class="text-gray-400">${exp.period} | ${exp.duration}</p>
+                 <div class="flex-grow">
+                     <h3 class="text-lg font-semibold text-gray-200">${exp.position}</h3>
+                     <div class="flex justify-between items-center">
+                        <p class="text-gray-200">${exp.company}</p>
+                        <p class="text-gray-200 ml-auto italic">${exp.period}</p>
+                     </div>
                      <p class="mt-2 text-gray-400">${exp.description}</p>
                  </div>
              `;
@@ -232,17 +237,30 @@
          });
          experienceList.appendChild(fragment);
          
-         resumePublications.slice(0, 2).forEach(pub => {
-             const li = document.createElement('li');
-             const authorList = pub.authors.map(name => (name === resumeData.name ? `<strong class="text-gray-300"> ${resumeData.name}</strong>` : name)).join(", ");
-             li.innerHTML = `
-                 ${authorList}, "${pub.title}," <em>${pub.venue}</em>, ${pub.year}.
-                 <a href="${pub.links.paper}" target="_blank">📄 Paper</a>
-                 ${pub.links.github ? `<a href="${pub.links.github}" target="_blank">📦 GitHub</a>` : ''}
-             `;
-             fragment.appendChild(li);
-         });
-         publicationsList.appendChild(fragment);
+         resumePublications.slice(0, 3).forEach(pub => {
+    const div = document.createElement('div');
+    const authorList = pub.authors.map(name => (name === resumeData.name ? `<span class="underline font-bold">${resumeData.name}</span>` : name)).join(", ");
+
+    div.innerHTML = `
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="text-lg font-semibold text-blue-200">${pub.title}</h3>
+            <div class="flex">
+                ${pub.links.paper ? '<a href="${pub.links.paper}" class="text-red-500 hover:text-red-300 mr-3" target="_blank"><i class="fa-solid fa-file-pdf fa-lg" aria-hidden="true"></i></a>' : ''}
+                ${pub.links.github ? '<a href="${pub.links.github}" class="text-gray-100 hover:text-gray-300 mr-3" target="_blank"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>' : ''}
+                ${pub.links.presentation ? '<a href="${pub.links.presentation}" class="text-orange-500 hover:text-orange-300 mr-3" target="_blank"><i class="fa-solid fa-file-powerpoint fa-lg" aria-hidden="true"></i></a>' : ''}
+            </div>
+        </div>
+
+        <p class="text-red-300 mt-1">${pub.award}</p>
+        <p class="text-gray-300 mt-1">${authorList}</p>
+        <p class="text-gray-400">${pub.venue}, ${pub.year}</p>
+    `;
+    fragment.appendChild(div);
+});
+publicationsList.appendChild(fragment);
+
+
+
          
          
          
