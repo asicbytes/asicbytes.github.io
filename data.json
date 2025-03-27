@@ -4,6 +4,12 @@
   "profilePicture": "https://media.licdn.com/dms/image/v2/D5603AQGSQlfl9vWxmA/profile-displayphoto-shrink_200_200/B56ZUhmNU1GQAY-/0/1740025419686?e=1748476800&v=beta&t=iEb2U8gKpBaYEGyzHsygi8O_mDM5Sh5BtgJyUdIXq7s",
   "title": "Doctoral Researcher",
   "organization": "IIT Bhubaneswar",
+  "interests": [
+  	"High-Performance Computing",
+  	"ASIC/FPGA Design",
+  	"Computer Vision",
+  	"Artificial Intelligence"
+   ],
   "email": "your.email@example.com",
   "socialLinks": {
     "website": "https://asicbytes.github.io",

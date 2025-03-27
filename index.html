@@ -32,6 +32,17 @@
          color: #63B3ED;
          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
          }
+         .interest-tag {
+    background-color: #87CEEB; /* Light sky blue background */
+    background-opacity: 0.2; /* Adjusted opacity */
+    color: #333; /* Darker text color for better contrast */
+    padding: 0.5em 1em; /* Adjusted padding for better spacing */
+    border-radius: 1em; /* Rounded corners for a modern look */
+    font-size: 0.9rem; /* Slightly smaller font size for tags */
+    display: inline-block; /* Ensure tags are displayed inline */
+    margin: 0.2em; /* Add some margin between tags */
+}
+
         
       </style>
    </head>
@@ -63,11 +74,7 @@
                <h1 class="text-3xl mb-2 brand-name" data-field="name"></h1>
                <p class="text-gray-300"><span data-field="title"></span>, <span data-field="organization"></span></p>
                <div class="mt-4">
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-blue-500 bg-opacity-20 text-blue-300 px-3 py-1 rounded-full text-sm">High-Performance Computing</span>
-                    <span class="bg-blue-500 bg-opacity-20 text-blue-300 px-3 py-1 rounded-full text-sm">ASIC/FPGA Design</span>
-                    <span class="bg-blue-500 bg-opacity-20 text-blue-300 px-3 py-1 rounded-full text-sm">Computer Vision</span>
-                    <span class="bg-blue-500 bg-opacity-20 text-blue-300 px-3 py-1 rounded-full text-sm">Artificial intelligence</span>
+                <div class="flex flex-wrap gap-2" id="interests">
                 </div>
             </div>
                <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-4">
@@ -133,6 +140,24 @@
          	const mobileMenu = document.getElementById('mobile-menu');
          
          mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+         
+         
+         const interestsList = resumeData.interests 
+             
+             const interestsContainer = document.getElementById('interests');
+    
+    // Clear existing content
+    interestsContainer.innerHTML = '';
+    
+    // Create and append new spans for each interest
+    interestsList.forEach(interest => {
+        const span = document.createElement('span');
+        span.className = 'bg-blue-500 bg-opacity-20 text-blue-200 px-3 py-1 rounded-full text-sm';
+        span.textContent = interest;
+        interestsContainer.appendChild(span);
+    });
+         
+         
          
          const socialIcons = document.querySelectorAll('.social-icon');
          const fragment = document.createDocumentFragment();
