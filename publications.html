@@ -9,15 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preload" href="data.json" as="fetch" crossorigin="anonymous">
     <style>
-       /* Custom styles for enhanced visual appeal */
-       .glassmorphism {
-       background: rgba(255, 255, 255, 0.1);
-       border-radius: 16px;
-       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-       backdrop-filter: blur(8.9px);
-       -webkit-backdrop-filter: blur(8.9px);
-       border: 3px solid rgba(255, 255, 255, 0.2);
-       }
        .btn-primary {
        @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md;
        }
@@ -46,99 +37,115 @@
     <div class="max-w-5xl mx-auto flex justify-between items-center px-6">
         <a href="/" class="brand-name" data-field="brandName">AsicBytes</a>
         <div class="hidden md:flex" id="desktop-menu">
-            <a href="#skills" class="hover:text-blue-300 px-3">Skills</a>
-            <a href="#education" class="hover:text-blue-300 px-3">Education</a>
-            <a href="#experience" class="hover:text-blue-300 px-3">Experience</a>
-            <a href="#publications" class="hover:text-blue-300 px-3">Publications</a>
+            <a href="index.html#skills" class="hover:text-blue-300 px-3">Skills</a>
+            <a href="index.html#education" class="hover:text-blue-300 px-3">Education</a>
+            <a href="experience.html" class="hover:text-blue-300 px-3">Experience</a>
+            <a href="publications.html" class="hover:text-blue-300 px-3">Publications</a>
         </div>
         <button id="mobile-menu-button" class="md:hidden">
             <i class="fas fa-bars"></i>
         </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden">
-        <a href="#skills" class="block py-2 px-4 hover:bg-gray-700">Skills</a>
-        <a href="#education" class="block py-2 px-4 hover:bg-gray-700">Education</a>
-        <a href="#experience" class="block py-2 px-4 hover:bg-gray-700">Experience</a>
-        <a href="#publications" class="block py-2 px-4 hover:bg-gray-700">Publications</a>
+        <a href="index.html#skills" class="block py-2 px-4 hover:bg-gray-700">Skills</a>
+        <a href="index.html#education" class="block py-2 px-4 hover:bg-gray-700">Education</a>
+        <a href="index.html#experience" class="block py-2 px-4 hover:bg-gray-700">Experience</a>
+        <a href="publications.html" class="block py-2 px-4 hover:bg-gray-700">Publications</a>
     </div>
 </nav>
     
-    <div class="max-w-5xl mx-auto my-3 p-4">
-        <div class="glassmorphism rounded-lg p-6" style="scroll-margin-top: 5rem;">
-            <h1 class="text-3xl font-bold text-blue-400 mb-4">Publications</h1>
-            <div id="publicationsList" class="space-y-6">
-                <!-- Publication items will be inserted here by JavaScript -->
-            </div>
+
+<div class="max-w-5xl mx-auto my-8 px-6">
+    <!-- Publications section -->
+    <div id="publications" class="opacity-0 transition-opacity duration-1000 ease-in-out">
+        <h1 class="text-3xl font-bold text-blue-400 mb-6">
+            <i class="fas fa-book mr-2" aria-hidden="true"></i>Publications
+        </h1>
+        <div class="space-y-6" id="publicationsList">
+            <!-- Publication items will be inserted here -->
         </div>
     </div>
+</div>
 
-
-<footer class="bg-gray-800 text-white py-4 shadow-md">
-  <div class="max-w-5xl mx-auto text-center">
-    <small class="text-gray-400">
-      © <span id="currentYear"></span> <span data-field="name"></span>. All rights reserved. 
-    </small>
-  </div>
+<footer class="bg-gray-800 text-white py-4 shadow-md mt-12">
+    <div class="max-w-5xl mx-auto text-center">
+        <small class="text-gray-400">
+            © <span id="currentYear"></span> <span data-field="name"></span>. All rights reserved. 
+        </small>
+    </div>
 </footer>
 
 <script>
-
-
-
-function initPage(){
-
-    const publicationsList = document.getElementById('publicationsList');
-            resumeData.publications.forEach((pub, index) => {
-                const pubElement = document.createElement('div');
-                pubElement.innerHTML = `
-                    <h2 class="text-xl font-semibold text-blue-300">${pub.title}</h2>
-                    <p class="text-gray-400 mt-1">
-                        ${resumeData.name}
-                    </p>
-                    <p class="text-gray-400 italic">
-                        ${pub.venue}, ${pub.year}
-                    </p>
-                    <div class="mt-2">
-                        <a href="${pub.links.paper}" class="text-blue-400 hover:text-blue-300" target="_blank">📄 Paper</a>
-                        ${pub.links.github ? `<a href="${pub.links.github}" class="text-blue-400 hover:text-blue-300 ml-4" target="_blank">📦 GitHub</a>` : ''}
+    function initPage(){
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        
+        const publicationsList = document.getElementById('publicationsList');
+        const resumePublications = resumeData.publications;
+        
+        // Create a new DocumentFragment for publications
+        const fragment = document.createDocumentFragment();
+        
+        // Check if resumePublications exists before trying to use it
+        if (resumePublications && Array.isArray(resumePublications)) {
+            resumePublications.forEach(pub => {
+                const div = document.createElement('div');
+                const authorList = pub.authors.map(name => (name === resumeData.name ? `<span class="underline font-bold text-white">${resumeData.name}</span>` : name)).join(", ");
+                div.innerHTML = `
+                    <div class="flex flex-col">
+                        <h3 class="text-xl font-semibold text-cyan-200 break-words">${pub.title}</h3>
+                        ${pub.award ? `<p class="text-pink-200 mt-1 font-medium">${pub.award}</p>` : ''}
+                        <p class="text-gray-200 mt-1 break-words">${authorList}</p>
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
+                            <em class="text-yellow-200 text-sm">${pub.venue}, ${pub.year}</em>
+                            <div class="flex space-x-4">
+                                ${pub.links?.paper ? `<a href="${pub.links.paper}" class="text-red-300 hover:text-red-100 transition-colors" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf text-lg" aria-hidden="true"></i></a>` : ''}
+                                ${pub.links?.github ? `<a href="${pub.links.github}" class="text-white hover:text-blue-200 transition-colors" target="_blank" aria-label="GitHub"><i class="fab fa-github text-lg" aria-hidden="true"></i></a>` : ''}
+                                ${pub.links?.presentation ? `<a href="${pub.links.presentation}" class="text-orange-300 hover:text-orange-100 transition-colors" target="_blank" aria-label="Presentation"><i class="fa-solid fa-file-powerpoint text-lg" aria-hidden="true"></i></a>` : ''}
+                            </div>
+                        </div>
                     </div>
                 `;
-                publicationsList.appendChild(pubElement);
+                div.className = "p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-cyan-500";
+                fragment.appendChild(div);
             });
+        }
+        
+        // Check if publicationsList exists before appending to it
+        if (publicationsList) {
+            publicationsList.appendChild(fragment);
+        }
+        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Add animation for publications section
+        setTimeout(() => {
+            const element = document.getElementById('publications');
+            if (element) {
+                element.classList.remove('opacity-0');
+                element.classList.add('opacity-100');
+            }
+        }, 100);
+        
+        document.querySelectorAll('[data-field]').forEach(element => {
+            const field = element.getAttribute('data-field');
+            const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
+            element.tagName === 'IMG' ? element.src = value : element.textContent = value;
+        });
+    }
 
-
-
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-  document.querySelectorAll('[data-field]').forEach(element => {
-             const field = element.getAttribute('data-field');
-             const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
-             element.tagName === 'IMG' ? element.src = value : element.textContent = value;
-         });
-
-}
-
-
-
-
-
-        let resumeData = null;  // Global variable to store JSON
-         
-         
-         document.addEventListener('DOMContentLoaded', function() {
-            
-         // Fetch the preloaded JSON
-         fetch('data.json')
-             .then(response => response.json())
-             .then(data => {
-                 resumeData = data;  // Assign JSON to variable
-                 initPage();
-             })
-             .catch(error => console.error('Error loading JSON:', error));
-             
-         
-         });
-
-    </script>
-</body>
-</html>
-
+    let resumeData = null;  // Global variable to store JSON
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch the preloaded JSON
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                resumeData = data;  // Assign JSON to variable
+                initPage();
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    });
+</script>

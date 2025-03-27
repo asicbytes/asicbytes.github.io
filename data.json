@@ -20,11 +20,11 @@
   "skills": [
     {
       "category": "Languages", 
-      "value": "C, C++, Python, Verilog, VHDL"
+      "values": ["C", "C++", "Python", "Verilog", "VHDL"]
     },
     {
       "category": "Tools", 
-      "value": "Vivado, ModelSim, Quartus, MATLAB, LaTeX"
+      "values": ["Vivado", "ModelSim", "Quartus", "MATLAB", "LaTeX"]
     }
   ],
   "education": [
