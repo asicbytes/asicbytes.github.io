@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preload" href="https://asicbytes.github.io/data.json" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="https://asicbytes.github.io/data.json" as="fetch" crossorigin="anonymous">
 
     
         <style>
@@ -47,13 +47,6 @@
     
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans antialiased">
-<div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75 backdrop-filter backdrop-blur-sm">
-    <div class="glassmorphism p-8 rounded-lg flex flex-col items-center">
-        <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
-        <p class="mt-4 text-blue-400 font-semibold">Loading...</p>
-    </div>
-</div>
-
 <nav class="bg-gray-800 text-white py-3 shadow-md sticky top-0 z-10">
     <div class="max-w-5xl mx-auto flex justify-between items-center px-6">
         <a href="/" class="brand-name" data-field="brandName">AsicBytes</a>
@@ -158,115 +151,10 @@
 </footer>
 
 <script>
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
-
-    <script>
-        const resumeData1 = {
-  "name": "Tapas Rout",
-  "brandName": "AsicBytes",
-  "profilePicture": "",
-  "title": "Doctoral Researcher",
-  "organization": "IIT Bhubaneswar",
-  "website": "asicbytes.github.io",
-  "email": "your.email@example.com",
-  "socialLinks": {
-    "linkedin": "#",
-    "github": "#",
-    "googleScholar": "#"
-  },
-  "skills": [
-    {
-        "category": "Languages", 
-        "value" : "C, C++, Python, Verilog, VHDL"
-    },
-    {
-        "category": "Tools", 
-        "value" : "Vivado, ModelSim, Quartus, MATLAB, LaTeX"
-    },
-  ],
-  "education": [
-    {
-      "degree": "PhD in SoC Design",
-      "institution": "IIT Bhubaneswar",
-      "period": "2025 - Present",
-      "logo": "https://via.placeholder.com/50",
-      "description": "Focusing on advanced System-on-Chip architectures for low-power and high-performance computing..."
-    },
-    {
-      "degree": "M.Tech in VLSI Design",
-      "institution": "XYZ University",
-      "period": "2023 - 2025",
-      "logo": "https://via.placeholder.com/50",
-      "description": "Specialized in VLSI design with a focus on digital and mixed-signal circuits..."
-    }
-  ],
-  "experience": [
-    {
-      "position": "Junior Research Fellow",
-      "company": "IIT Bhubaneswar",
-      "period": "Jan 2025 - Present",
-      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
-      "description": "Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications..."
-    },
-    {
-      "position": "Summer Intern",
-      "company": "XYZ Company",
-      "period": "May 2024 - July 2024",
-      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
-      "description": "Worked on the development of high-speed communication protocols for embedded systems..."
-    }
-  ],
-  "publications": [
-        {
-            "title": "Advanced SoC Architectures for Low-Power AI Applications",
-            "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
-            "year": 2025,
-            "links": {
-                "paper": "https://example.com/paper1",
-                "github": "https://github.com/asicbytes/soc-ai-lowpower"
-            }
-        },
-        {
-            "title": "Energy-Efficient FPGA Designs for Edge Computing",
-            "venue": "ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED)",
-            "year": 2024,
-            "links": {
-                "paper": "https://example.com/paper2",
-                "github": "https://github.com/asicbytes/fpga-edge-computing"
-            }
-        },
-        {
-            "title": "Novel Interconnect Technologies for Next-Generation SoCs",
-            "venue": "Design, Automation & Test in Europe Conference & Exhibition (DATE)",
-            "year": 2024,
-            "links": {
-                "paper": "https://example.com/paper3"
-            }
-        },
-        {
-            "title": "Optimization Techniques for Energy-Efficient SoC Designs in IoT Applications",
-            "venue": "IEEE Internet of Things Journal",
-            "year": 2023,
-            "links": {
-                "paper": "https://example.com/paper4",
-                "github": "https://github.com/asicbytes/iot-soc-optimization"
-            }
-        }
-  ]
-};
-
-    </script>
-    <script>
     
     
-    
-// Global variable to store JSON
-let resumeData = null;
-
-// Function to populate the DOM with resume data
-function populateDOM() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    function initPage(){
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
     mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
@@ -308,16 +196,14 @@ function populateDOM() {
     const experienceList = document.getElementById('experienceList');
     const publicationList = document.getElementById('publicationList');
 
-    // Populate skills
     resumeData.skills.forEach(skill => {
         const div = document.createElement('div');
         div.className = 'flex flex-wrap items-center';
         div.innerHTML = `<h3 class="font-semibold text-lg text-gray-300 mr-2">${skill.category} : </h3><p class="text-gray-400">${skill.value}</p>`;
         fragment.appendChild(div);
     });
-    skillsList.appendChild(fragment.cloneNode(true));
+    skillsList.appendChild(fragment);
 
-    // Populate education
     resumeData.education.forEach(edu => {
         const div = document.createElement('div');
         div.className = 'flex items-start gap-4';
@@ -331,9 +217,8 @@ function populateDOM() {
         `;
         fragment.appendChild(div);
     });
-    educationList.appendChild(fragment.cloneNode(true));
+    educationList.appendChild(fragment);
 
-    // Populate experience
     resumeData.experience.forEach(exp => {
         const div = document.createElement('div');
         div.className = 'flex items-start gap-4';
@@ -347,9 +232,8 @@ function populateDOM() {
         `;
         fragment.appendChild(div);
     });
-    experienceList.appendChild(fragment.cloneNode(true));
+    experienceList.appendChild(fragment);
 
-    // Populate publications
     resumeData.publications.slice(0, 2).forEach(pub => {
         const li = document.createElement('li');
         li.innerHTML = `
@@ -360,44 +244,28 @@ function populateDOM() {
         fragment.appendChild(li);
     });
     publicationList.appendChild(fragment);
-
-    // Hide loading indicator
-    document.getElementById('loading').style.display = 'none';
-}
-
-
-// Function to show/hide loading indicator
-function setLoading(isLoading) {
-    const loadingElement = document.getElementById('loading');
-    loadingElement.style.display = isLoading ? 'flex' : 'none';
-}
-
-// Function to load JSON and initialize the page
-function initPage() {
-    setLoading(true);
-
-    fetch('https://asicbytes.github.io/data.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+    
+    
+    
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    }
+        
+    let resumeData = null;  // Global variable to store JSON
+    
+    
+    document.addEventListener('DOMContentLoaded', function() {
+       
+    // Fetch the preloaded JSON
+    fetch('data.json')
+        .then(response => response.json())
         .then(data => {
-            resumeData = data;
-            populateDOM();
-            setLoading(false);
+            resumeData = data;  // Assign JSON to variable
+            initPage();
         })
-        .catch(error => {
-            console.error('Error loading JSON:', error);
-            setLoading(false);
-            alert('Error loading data. Please try again later.');
-        });
-}
-
-// Wait for DOM to be fully loaded before initializing
-document.addEventListener('DOMContentLoaded', initPage);
-
+        .catch(error => console.error('Error loading JSON:', error));
+        
+    
 });
 
 
