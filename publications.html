@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+        <style>
+        /* Custom styles for enhanced visual appeal */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.9px);
+            -webkit-backdrop-filter: blur(8.9px);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary {
+            @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md;
+        }
+
+        .social-icon {
+            @apply hover:scale-110 transition-transform;
+        }
+
+        /* Stylish AsicBytes */
+.brand-name {
+    font-family: 'Lobster', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #63B3ED;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+    <!-- Navigation Bar (same as main page) -->
+<nav class="bg-gray-800 text-white py-3 shadow-md sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto flex justify-between items-center px-6">
+        <a href="/" class="brand-name" data-field="brandName">AsicBytes</a>
+        <div class="hidden md:flex" id="desktop-menu">
+            <a href="#skills" class="hover:text-blue-300 px-3">Skills</a>
+            <a href="#education" class="hover:text-blue-300 px-3">Education</a>
+            <a href="#experience" class="hover:text-blue-300 px-3">Experience</a>
+            <a href="#publications" class="hover:text-blue-300 px-3">Publications</a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+        <a href="#skills" class="block py-2 px-4 hover:bg-gray-700">Skills</a>
+        <a href="#education" class="block py-2 px-4 hover:bg-gray-700">Education</a>
+        <a href="#experience" class="block py-2 px-4 hover:bg-gray-700">Experience</a>
+        <a href="#publications" class="block py-2 px-4 hover:bg-gray-700">Publications</a>
+    </div>
+</nav>
+    
+    <div class="max-w-5xl mx-auto my-3 p-4">
+        <div class="glassmorphism rounded-lg p-6">
+            <h1 class="text-3xl font-bold text-blue-400 mb-4">Publications</h1>
+            <div id="publicationList" class="space-y-6">
+                <!-- Publication items will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+<footer class="bg-gray-800 text-white py-4 shadow-md">
+  <div class="max-w-5xl mx-auto text-center">
+    <small class="text-gray-400">
+      © <span id="currentYear"></span> <span data-field="name"></span>. All rights reserved. 
+    </small>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+    <script>
+        // Keep the same resumeData object
+        
+        const resumeData = {
+  "name": "Tapas Rout",
+  "brandName": "AsicBytes",
+  "profilePicture": "",
+  "title": "Doctoral Researcher",
+  "organization": "IIT Bhubaneswar",
+  "phone": "+123 456 7890",
+  "website": "www.yourwebsite.com",
+  "email": "your.email@example.com",
+  "socialLinks": {
+    "linkedin": "#",
+    "github": "#",
+    "googleScholar": "#"
+  },
+  "skills": [
+    {
+        "category": "Languages", 
+        "value" : "C, C++, Python, Verilog, VHDL"
+    },
+    {
+        "category": "Tools", 
+        "value" : "Vivado, ModelSim, Quartus, MATLAB, LaTeX"
+    },
+  ],
+  "education": [
+    {
+      "degree": "PhD in SoC Design",
+      "institution": "IIT Bhubaneswar",
+      "period": "2025 - Present",
+      "logo": "https://via.placeholder.com/50",
+      "description": "Focusing on advanced System-on-Chip architectures for low-power and high-performance computing..."
+    },
+    {
+      "degree": "M.Tech in VLSI Design",
+      "institution": "XYZ University",
+      "period": "2023 - 2025",
+      "logo": "https://via.placeholder.com/50",
+      "description": "Specialized in VLSI design with a focus on digital and mixed-signal circuits..."
+    }
+  ],
+  "experience": [
+    {
+      "position": "Junior Research Fellow",
+      "company": "IIT Bhubaneswar",
+      "period": "Jan 2025 - Present",
+      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+      "description": "Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications..."
+    },
+    {
+      "position": "Summer Intern",
+      "company": "XYZ Company",
+      "period": "May 2024 - July 2024",
+      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+      "description": "Worked on the development of high-speed communication protocols for embedded systems..."
+    }
+  ],
+  "publications": [
+        {
+            "title": "Advanced SoC Architectures for Low-Power AI Applications",
+            "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+            "year": 2025,
+            "links": {
+                "paper": "https://example.com/paper1",
+                "github": "https://github.com/asicbytes/soc-ai-lowpower"
+            }
+        },
+        {
+            "title": "Energy-Efficient FPGA Designs for Edge Computing",
+            "venue": "ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED)",
+            "year": 2024,
+            "links": {
+                "paper": "https://example.com/paper2",
+                "github": "https://github.com/asicbytes/fpga-edge-computing"
+            }
+        },
+        {
+            "title": "Novel Interconnect Technologies for Next-Generation SoCs",
+            "venue": "Design, Automation & Test in Europe Conference & Exhibition (DATE)",
+            "year": 2024,
+            "links": {
+                "paper": "https://example.com/paper3"
+            }
+        },
+        {
+            "title": "Optimization Techniques for Energy-Efficient SoC Designs in IoT Applications",
+            "venue": "IEEE Internet of Things Journal",
+            "year": 2023,
+            "links": {
+                "paper": "https://example.com/paper4",
+                "github": "https://github.com/asicbytes/iot-soc-optimization"
+            }
+        }
+  ]
+};
+        
+        // Modify the DOMContentLoaded event listener to only populate publications
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            
+            
+            document.querySelectorAll('[data-field]').forEach(element => {
+                const field = element.getAttribute('data-field');
+                const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
+        if (element.tagName === 'IMG') {
+            element.src = value;
+        } else {
+            element.textContent = value;
+        }
+            })
+        
+            const publicationList = document.getElementById('publicationList');
+            resumeData.publications.forEach((pub, index) => {
+                const pubElement = document.createElement('div');
+                pubElement.innerHTML = `
+                    <h2 class="text-xl font-semibold text-blue-300">${pub.title}</h2>
+                    <p class="text-gray-400 mt-1">
+                        ${resumeData.name}
+                    </p>
+                    <p class="text-gray-400 italic">
+                        ${pub.venue}, ${pub.year}
+                    </p>
+                    <div class="mt-2">
+                        <a href="${pub.links.paper}" class="text-blue-400 hover:text-blue-300" target="_blank">📄 Paper</a>
+                        ${pub.links.github ? `<a href="${pub.links.github}" class="text-blue-400 hover:text-blue-300 ml-4" target="_blank">📦 GitHub</a>` : ''}
+                    </div>
+                `;
+                publicationList.appendChild(pubElement);
+            });
+        });
+    </script>
+</body>
+</html>
+

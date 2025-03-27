@@ -1,1 +1,363 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="resume.json" as="fetch" type="application/json">
+    
+        <style>
+        /* Custom styles for enhanced visual appeal */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.9px);
+            -webkit-backdrop-filter: blur(8.9px);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary {
+            @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md;
+        }
+
+        .social-icon {
+            @apply hover:scale-110 transition-transform;
+        }
+
+        /* Stylish AsicBytes */
+.brand-name {
+    font-family: 'Lobster', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #63B3ED;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+    </style>
+    
+    
+    
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+<nav class="bg-gray-800 text-white py-3 shadow-md sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto flex justify-between items-center px-6">
+        <a href="/" class="brand-name" data-field="brandName">AsicBytes</a>
+        <div class="hidden md:flex" id="desktop-menu">
+            <a href="#skills" class="hover:text-blue-300 px-3">Skills</a>
+            <a href="#education" class="hover:text-blue-300 px-3">Education</a>
+            <a href="#experience" class="hover:text-blue-300 px-3">Experience</a>
+            <a href="#publications" class="hover:text-blue-300 px-3">Publications</a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+        <a href="#skills" class="block py-2 px-4 hover:bg-gray-700">Skills</a>
+        <a href="#education" class="block py-2 px-4 hover:bg-gray-700">Education</a>
+        <a href="#experience" class="block py-2 px-4 hover:bg-gray-700">Experience</a>
+        <a href="#publications" class="block py-2 px-4 hover:bg-gray-700">Publications</a>
+    </div>
+</nav>
+
+    
+    <div class="max-w-5xl mx-auto my-3 p-4 grid gap-6">
+        <div class="glassmorphism rounded-lg p-8 flex flex-col md:flex-row items-center md:items-start gap-6">
+            <img data-field="profilePicture" src="" alt="Profile Picture" class="w-32 h-32 md:w-40 md:h-40 shadow-md object-cover rounded-full border-2 border-blue-500">
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-3xl mb-2 brand-name" data-field="name"></h1>
+                <p class="text-gray-300"><span data-field="title"></span>, <span data-field="organization"></span></p>
+
+
+
+<p class="text-gray-400 mt-2">
+  <a id="websiteLink" href="#" data-field="website" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300"></a>
+</p>
+
+
+
+                
+<div class="mt-6 flex flex-wrap justify-center md:justify-start gap-4">
+    <a href="#" class="btn-primary flex items-center gap-2 social-icon" data-link="email">
+        <i class="fas fa-envelope"></i> Email
+    </a>
+    <a href="#" class="btn-primary flex items-center gap-2 social-icon" data-link="linkedin">
+        <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="#" class="btn-primary flex items-center gap-2 social-icon" data-link="github">
+        <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="#" class="btn-primary flex items-center gap-2 social-icon" data-link="googleScholar">
+        <i class="fas fa-graduation-cap"></i> Google Scholar
+    </a>
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Skills section -->
+<div id="skills" class="glassmorphism rounded-lg p-6" style="scroll-margin-top: 5rem;">
+    <h2 class="text-2xl font-semibold text-blue-400 mb-4">Skills</h2>
+    <div class="space-y-4" id="skillsList">
+
+    </div>
+</div>
+
+
+        <!-- Education section -->
+        <div id="education" class="glassmorphism rounded-lg p-6" style="scroll-margin-top: 5rem;">
+            <h2 class="text-2xl font-semibold text-blue-400 mb-4">Education</h2>
+            <div class="mt-4 space-y-8" id="educationList">
+                <!-- Education items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Work Experience section -->
+        <div id="experience" class="glassmorphism rounded-lg p-6" style="scroll-margin-top: 5rem;">
+            <h2 class="text-2xl font-semibold text-blue-400 mb-4">Work Experience</h2>
+            <div class="mt-4 space-y-8" id="experienceList">
+                <!-- Experience items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Publications section -->
+        <div id="publications" class="glassmorphism rounded-lg p-6" style="scroll-margin-top: 5rem;">
+            <h2 class="text-2xl font-semibold text-blue-400 mb-4">Publications</h2>
+            <ol class="mt-2 space-y-2 list-decimal list-inside text-gray-400" id="publicationList">
+                <!-- Publication items will be inserted here -->
+            </ol>
+                <p class="mt-4 text-gray-400">
+        <a href="publications.html" class="text-blue-400 hover:text-blue-300">Click here to view all publications</a>
+    </p>
+        </div>
+    </div>
+    
+<footer class="bg-gray-800 text-white py-4 shadow-md">
+  <div class="max-w-5xl mx-auto text-center">
+    <small class="text-gray-400">
+      © <span id="currentYear"></span> <span data-field="name"></span>. All rights reserved. 
+    </small>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+    <script>
+        const resumeData1 = {
+  "name": "Tapas Rout",
+  "brandName": "AsicBytes",
+  "profilePicture": "",
+  "title": "Doctoral Researcher",
+  "organization": "IIT Bhubaneswar",
+  "website": "asicbytes.github.io",
+  "email": "your.email@example.com",
+  "socialLinks": {
+    "linkedin": "#",
+    "github": "#",
+    "googleScholar": "#"
+  },
+  "skills": [
+    {
+        "category": "Languages", 
+        "value" : "C, C++, Python, Verilog, VHDL"
+    },
+    {
+        "category": "Tools", 
+        "value" : "Vivado, ModelSim, Quartus, MATLAB, LaTeX"
+    },
+  ],
+  "education": [
+    {
+      "degree": "PhD in SoC Design",
+      "institution": "IIT Bhubaneswar",
+      "period": "2025 - Present",
+      "logo": "https://via.placeholder.com/50",
+      "description": "Focusing on advanced System-on-Chip architectures for low-power and high-performance computing..."
+    },
+    {
+      "degree": "M.Tech in VLSI Design",
+      "institution": "XYZ University",
+      "period": "2023 - 2025",
+      "logo": "https://via.placeholder.com/50",
+      "description": "Specialized in VLSI design with a focus on digital and mixed-signal circuits..."
+    }
+  ],
+  "experience": [
+    {
+      "position": "Junior Research Fellow",
+      "company": "IIT Bhubaneswar",
+      "period": "Jan 2025 - Present",
+      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+      "description": "Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications..."
+    },
+    {
+      "position": "Summer Intern",
+      "company": "XYZ Company",
+      "period": "May 2024 - July 2024",
+      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+      "description": "Worked on the development of high-speed communication protocols for embedded systems..."
+    }
+  ],
+  "publications": [
+        {
+            "title": "Advanced SoC Architectures for Low-Power AI Applications",
+            "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+            "year": 2025,
+            "links": {
+                "paper": "https://example.com/paper1",
+                "github": "https://github.com/asicbytes/soc-ai-lowpower"
+            }
+        },
+        {
+            "title": "Energy-Efficient FPGA Designs for Edge Computing",
+            "venue": "ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED)",
+            "year": 2024,
+            "links": {
+                "paper": "https://example.com/paper2",
+                "github": "https://github.com/asicbytes/fpga-edge-computing"
+            }
+        },
+        {
+            "title": "Novel Interconnect Technologies for Next-Generation SoCs",
+            "venue": "Design, Automation & Test in Europe Conference & Exhibition (DATE)",
+            "year": 2024,
+            "links": {
+                "paper": "https://example.com/paper3"
+            }
+        },
+        {
+            "title": "Optimization Techniques for Energy-Efficient SoC Designs in IoT Applications",
+            "venue": "IEEE Internet of Things Journal",
+            "year": 2023,
+            "links": {
+                "paper": "https://example.com/paper4",
+                "github": "https://github.com/asicbytes/iot-soc-optimization"
+            }
+        }
+  ]
+};
+
+    </script>
+    <script>
+    
+    
+    
+    let resumeData = null;  // Global variable to store JSON
+
+    // Fetch the preloaded JSON
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            resumeData = data;  // Assign JSON to variable
+        })
+        .catch(error => console.error('Error loading JSON:', error));
+        
+       document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const socialIcons = document.querySelectorAll('.social-icon');
+    const websiteLink = document.getElementById('websiteLink');
+    const fragment = document.createDocumentFragment();
+
+    socialIcons.forEach(icon => {
+        const linkType = icon.getAttribute('data-link');
+        if (linkType !== 'email') {
+            icon.href = resumeData.socialLinks[linkType];
+        } else {
+            icon.addEventListener('click', handleEmailLink);
+            icon.addEventListener('mouseenter', handleEmailLink);
+        }
+    });
+
+    function handleEmailLink(event) {
+        event.preventDefault();
+        this.href = `mailto:${resumeData.email}`;
+        if (event.type === 'click') window.location.href = this.href;
+    }
+
+    if (websiteLink) {
+        const websiteUrl = resumeData.website;
+        websiteLink.href = websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`;
+        websiteLink.textContent = websiteUrl;
+    }
+
+    document.querySelectorAll('[data-field]').forEach(element => {
+        const field = element.getAttribute('data-field');
+        const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
+        element.tagName === 'IMG' ? element.src = value : element.textContent = value;
+    });
+
+    const skillsList = document.getElementById('skillsList');
+    const educationList = document.getElementById('educationList');
+    const experienceList = document.getElementById('experienceList');
+    const publicationList = document.getElementById('publicationList');
+
+    resumeData.skills.forEach(skill => {
+        const div = document.createElement('div');
+        div.className = 'flex flex-wrap items-center';
+        div.innerHTML = `<h3 class="font-semibold text-lg text-gray-300 mr-2">${skill.category} : </h3><p class="text-gray-400">${skill.value}</p>`;
+        fragment.appendChild(div);
+    });
+    skillsList.appendChild(fragment);
+
+    resumeData.education.forEach(edu => {
+        const div = document.createElement('div');
+        div.className = 'flex items-start gap-4';
+        div.innerHTML = `
+            <img src="${edu.logo}" alt="${edu.institution} Logo" class="w-12 h-12 object-cover rounded">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-300">${edu.degree}</h3>
+                <p class="text-gray-400">${edu.institution} (${edu.period})</p>
+                <p class="mt-2 text-gray-400">${edu.description}</p>
+            </div>
+        `;
+        fragment.appendChild(div);
+    });
+    educationList.appendChild(fragment);
+
+    resumeData.experience.forEach(exp => {
+        const div = document.createElement('div');
+        div.className = 'flex items-start gap-4';
+        div.innerHTML = `
+            <img src="${exp.logo}" alt="${exp.company} Logo" class="w-12 h-12 object-cover rounded">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-300">${exp.position}</h3>
+                <p class="text-gray-400">${exp.company} (${exp.period})</p>
+                <p class="mt-2 text-gray-400">${exp.description}</p>
+            </div>
+        `;
+        fragment.appendChild(div);
+    });
+    experienceList.appendChild(fragment);
+
+    resumeData.publications.slice(0, 2).forEach(pub => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <strong>${resumeData.name}</strong>, "${pub.title}," <em>${pub.venue}</em>, ${pub.year}.
+            <a href="${pub.links.paper}" target="_blank">📄 Paper</a>
+            ${pub.links.github ? `<a href="${pub.links.github}" target="_blank">📦 GitHub</a>` : ''}
+        `;
+        fragment.appendChild(li);
+    });
+    publicationList.appendChild(fragment);
+});
+
+
+    </script>
+</body>
+</html>
+
