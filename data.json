@@ -42,6 +42,7 @@
       "position": "Junior Research Fellow",
       "company": "IIT Bhubaneswar",
       "period": "Jan 2025 - Present",
+      "duration" : "6 Months",
       "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
       "description": "Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications..."
     },
@@ -49,12 +50,14 @@
       "position": "Summer Intern",
       "company": "XYZ Company",
       "period": "May 2024 - July 2024",
+      "duration" : "6 Months",
       "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
       "description": "Worked on the development of high-speed communication protocols for embedded systems..."
     }
   ],
   "publications": [
     {
+      "authors": [ "Aarav Sharma", "Tapas Rout", "Kunal Reddy", "Neha Bansal"],
       "title": "Advanced SoC Architectures for Low-Power AI Applications",
       "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
       "year": 2025,
@@ -64,6 +67,7 @@
       }
     },
     {
+      "authors": ["Yashwant Pillai", "Pooja Saxena", "Abhishek Menon", "Shruti Ghosh"],
       "title": "Energy-Efficient FPGA Designs for Edge Computing",
       "venue": "ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED)",
       "year": 2024,
@@ -73,6 +77,7 @@
       }
     },
     {
+      "authors": ["Yashwant Pillai", "Pooja Saxena", "Abhishek Menon", "Shruti Ghosh"],
       "title": "Novel Interconnect Technologies for Next-Generation SoCs",
       "venue": "Design, Automation & Test in Europe Conference & Exhibition (DATE)",
       "year": 2024,
@@ -81,6 +86,7 @@
       }
     },
     {
+      "authors": ["Yashwant Pillai", "Pooja Saxena", "Abhishek Menon", "Shruti Ghosh"],
       "title": "Optimization Techniques for Energy-Efficient SoC Designs in IoT Applications",
       "venue": "IEEE Internet of Things Journal",
       "year": 2023,
