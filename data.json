@@ -1,12 +1,12 @@
 {
   "name": "Tapas Rout",
   "brandName": "AsicBytes",
-  "profilePicture": "",
+  "profilePicture": "https://media.licdn.com/dms/image/v2/D5603AQGSQlfl9vWxmA/profile-displayphoto-shrink_200_200/B56ZUhmNU1GQAY-/0/1740025419686?e=1748476800&v=beta&t=iEb2U8gKpBaYEGyzHsygi8O_mDM5Sh5BtgJyUdIXq7s",
   "title": "Doctoral Researcher",
   "organization": "IIT Bhubaneswar",
-  "website": "asicbytes.github.io",
   "email": "your.email@example.com",
   "socialLinks": {
+    "website": "https://asicbytes.github.io",
     "linkedin": "#",
     "github": "#",
     "googleScholar": "#"
@@ -30,7 +30,7 @@
       "description": "Focusing on advanced System-on-Chip architectures for low-power and high-performance computing..."
     },
     {
-      "degree": "M.Tech in VLSI Design",
+      "degree": "B.Tech in ECE",
       "institution": "XYZ University",
       "period": "2023 - 2025",
       "logo": "https://via.placeholder.com/50",
