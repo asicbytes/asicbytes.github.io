@@ -47,6 +47,13 @@
     
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans antialiased">
+<div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75 backdrop-filter backdrop-blur-sm">
+    <div class="glassmorphism p-8 rounded-lg flex flex-col items-center">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+        <p class="mt-4 text-blue-400 font-semibold">Loading...</p>
+    </div>
+</div>
+
 <nav class="bg-gray-800 text-white py-3 shadow-md sticky top-0 z-10">
     <div class="max-w-5xl mx-auto flex justify-between items-center px-6">
         <a href="/" class="brand-name" data-field="brandName">AsicBytes</a>
@@ -254,17 +261,11 @@
     
     
     
-    let resumeData = null;  // Global variable to store JSON
+// Global variable to store JSON
+let resumeData = null;
 
-    // Fetch the preloaded JSON
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            resumeData = data;  // Assign JSON to variable
-        })
-        .catch(error => console.error('Error loading JSON:', error));
-        
-       document.addEventListener('DOMContentLoaded', function() {
+// Function to populate the DOM with resume data
+function populateDOM() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -307,14 +308,16 @@
     const experienceList = document.getElementById('experienceList');
     const publicationList = document.getElementById('publicationList');
 
+    // Populate skills
     resumeData.skills.forEach(skill => {
         const div = document.createElement('div');
         div.className = 'flex flex-wrap items-center';
         div.innerHTML = `<h3 class="font-semibold text-lg text-gray-300 mr-2">${skill.category} : </h3><p class="text-gray-400">${skill.value}</p>`;
         fragment.appendChild(div);
     });
-    skillsList.appendChild(fragment);
+    skillsList.appendChild(fragment.cloneNode(true));
 
+    // Populate education
     resumeData.education.forEach(edu => {
         const div = document.createElement('div');
         div.className = 'flex items-start gap-4';
@@ -328,8 +331,9 @@
         `;
         fragment.appendChild(div);
     });
-    educationList.appendChild(fragment);
+    educationList.appendChild(fragment.cloneNode(true));
 
+    // Populate experience
     resumeData.experience.forEach(exp => {
         const div = document.createElement('div');
         div.className = 'flex items-start gap-4';
@@ -343,8 +347,9 @@
         `;
         fragment.appendChild(div);
     });
-    experienceList.appendChild(fragment);
+    experienceList.appendChild(fragment.cloneNode(true));
 
+    // Populate publications
     resumeData.publications.slice(0, 2).forEach(pub => {
         const li = document.createElement('li');
         li.innerHTML = `
@@ -355,6 +360,44 @@
         fragment.appendChild(li);
     });
     publicationList.appendChild(fragment);
+
+    // Hide loading indicator
+    document.getElementById('loading').style.display = 'none';
+}
+
+
+// Function to show/hide loading indicator
+function setLoading(isLoading) {
+    const loadingElement = document.getElementById('loading');
+    loadingElement.style.display = isLoading ? 'flex' : 'none';
+}
+
+// Function to load JSON and initialize the page
+function initPage() {
+    setLoading(true);
+
+    fetch('https://asicbytes.github.io/data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            resumeData = data;
+            populateDOM();
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error('Error loading JSON:', error);
+            setLoading(false);
+            alert('Error loading data. Please try again later.');
+        });
+}
+
+// Wait for DOM to be fully loaded before initializing
+document.addEventListener('DOMContentLoaded', initPage);
+
 });
 
 
