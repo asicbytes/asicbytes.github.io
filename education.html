@@ -119,30 +119,48 @@
             </div>
          </div>
 <!-- For skills section, standardize on one approach across all pages -->
-<section class="bg-gray-50 dark:bg-gray-900 py-8">
+<section class="bg-white dark:bg-gray-900 py-12">
     <div class="max-w-5xl mx-auto px-4">
       <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Skills</h2>
       <p class="text-gray-600 dark:text-gray-400 mb-6">Technical expertise and professional competencies</p>
       
-      <div class="space-y-8">
-        <!-- EDA Tools -->
-        <div>
-          <h3 class="text-lg font-medium text-gray-800 dark:text-white mb-3 flex items-center">
-            <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M13 7H7v6h6V7z"></path>
-              <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd"></path>
-            </svg>
-            EDA Tools
-          </h3>
+      <div class="space-y-4">
+        <!-- EDA Tools Card -->
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm card border-l-4 border-primary dark:border-blue-400">
+          <div class="flex items-center mb-3">
+            <span class="material-icons text-blue-600 dark:text-blue-400 mr-3">memory</span>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white">EDA Tools</h3>
+          </div>
           <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
             Cadence Virtuoso, Calibre, Design Compiler, Genus, VCS, NCSIM, Innovus, Abstract, Liberate, Xilinx Vivado, MATLAB, Keil uVision, Sentaurus TCAD
           </p>
         </div>
         
-        <!-- Other skill sections with same pattern -->
+        <!-- Programming Card -->
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm card border-l-4 border-green-600 dark:border-green-400">
+          <div class="flex items-center mb-3">
+            <span class="material-icons text-green-600 dark:text-green-400 mr-3">code</span>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white">Programming</h3>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Python, Verilog, System Verilog, C, TCL, Bash, HTML/CSS
+          </p>
+        </div>
+        
+        <!-- Microcontroller Card -->
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm card border-l-4 border-purple-600 dark:border-purple-400">
+          <div class="flex items-center mb-3">
+            <span class="material-icons text-purple-600 dark:text-purple-400 mr-3">developer_board</span>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white">Microcontroller</h3>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Raspberry Pi 3, ARM7, Arduino, AVR, ARM Cortex M0, 8085
+          </p>
+        </div>
       </div>
     </div>
   </section>
+  
   
       </main>
       <!-- Footer -->
