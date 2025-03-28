@@ -1,151 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Researcher Resume</title>
+    <title>AsicBytes - Publications</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preload" href="data.json" as="fetch" crossorigin="anonymous">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7B2CBF', // Deep purple as primary color
+                        accent: '#FF9F1C', // Orange accent
+                    },
+                },
+            },
+        }
+    </script>
     <style>
-       .btn-primary {
-       @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md;
-       }
-       .social-icon {
-       @apply hover:scale-110 transition-transform;
-       }
-       /* Stylish AsicBytes */
-       .brand-name {
-       font-family: 'Comic Neue', sans-serif;
-       font-size: 1.7rem;
-       font-weight: bold;
-       color: #63B3ED;
-       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-       }
-       
+        .btn-primary {
+            @apply bg-primary hover:bg-purple-800 text-white font-bold py-2 px-4 rounded shadow-md;
+        }
+        .social-icon {
+            @apply hover:scale-110 transition-transform;
+        }
+        /* Redesigned AsicBytes logo with more character */
+        .brand-name {
+            font-family: 'Comic Neue', sans-serif;
+            font-size: 1.7rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #7B2CBF 0%, #5A189A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .dark .brand-name {
+            background: linear-gradient(135deg, #9D4EDD 0%, #C77DFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-
-      
     </style>
-
-
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans antialiased">
-    <!-- Navigation Bar (same as main page) -->
-<nav class="bg-gray-800 text-white py-3 shadow-md sticky top-0 z-10">
-    <div class="max-w-5xl mx-auto flex justify-between items-center px-6">
-        <a href="/" class="brand-name" data-field="brandName">AsicBytes</a>
-        <div class="hidden md:flex" id="desktop-menu">
-            <a href="index.html#skills" class="hover:text-blue-300 px-3">Skills</a>
-            <a href="index.html#education" class="hover:text-blue-300 px-3">Education</a>
-            <a href="experience.html" class="hover:text-blue-300 px-3">Experience</a>
-            <a href="publications.html" class="hover:text-blue-300 px-3">Publications</a>
+<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
+    <!-- Navigation Bar -->
+    <nav class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-4 shadow-lg rounded-t-lg sticky top-0 z-10">
+        <div class="max-w-5xl mx-auto flex justify-between items-center px-8">
+            <a href="/" class="brand-name">AsicBytes</a>
+            <div class="hidden md:flex space-x-4" id="desktop-menu">
+                <a href="education.html" class="hover:text-primary dark:hover:text-accent">Education</a>
+                <a href="experience.html" class="hover:text-primary dark:hover:text-accent">Experience</a>
+                <a href="publications.html" class="hover:text-primary dark:hover:text-accent">Publications</a>
+                <a href="tutorials.html" class="hover:text-primary dark:hover:text-accent">Tutorials</a>
+                <a href="projects.html" class="hover:text-primary dark:hover:text-accent">Projects</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-2">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
         </div>
-        <button id="mobile-menu-button" class="md:hidden">
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden">
-        <a href="index.html#skills" class="block py-2 px-4 hover:bg-gray-700">Skills</a>
-        <a href="index.html#education" class="block py-2 px-4 hover:bg-gray-700">Education</a>
-        <a href="index.html#experience" class="block py-2 px-4 hover:bg-gray-700">Experience</a>
-        <a href="publications.html" class="block py-2 px-4 hover:bg-gray-700">Publications</a>
-    </div>
-</nav>
-    
-
-<div class="max-w-5xl mx-auto my-8 px-6">
-    <!-- Publications section -->
-    <div id="publications" class="opacity-0 transition-opacity duration-1000 ease-in-out">
-        <h1 class="text-3xl font-bold text-blue-400 mb-6">
-            <i class="fas fa-book mr-2" aria-hidden="true"></i>Publications
-        </h1>
-        <div class="space-y-6" id="publicationsList">
-            <!-- Publication items will be inserted here -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+            <a href="education.html" class="block py-3 px-6 hover:bg-gray-100 dark:hover:bg-gray-700">Education</a>
+            <a href="experience.html" class="block py-3 px-6 hover:bg-gray-100 dark:hover:bg-gray-700">Experience</a>
+            <a href="publications.html" class="block py-3 px-6 hover:bg-gray-100 dark:hover:bg-gray-700">Publications</a>
+            <a href="tutorials.html" class="block py-3 px-6 hover:bg-gray-100 dark:hover:bg-gray-700">Tutorials</a>
+            <a href="projects.html" class="block py-3 px-6 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
         </div>
-    </div>
-</div>
+    </nav>
 
-<footer class="bg-gray-800 text-white py-4 shadow-md mt-12">
-    <div class="max-w-5xl mx-auto text-center">
-        <small class="text-gray-400">
-            © <span id="currentYear"></span> <span data-field="name"></span>. All rights reserved. 
-        </small>
-    </div>
-</footer>
+    <!-- Main Content -->
+    <main class="flex-1 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto my-8 px-6">
+            <div id="publications" class="opacity-0 transition-opacity duration-1000 ease-in-out">
+                <h1 class="text-3xl font-bold text-primary dark:text-accent mb-6">
+                    <i class="fas fa-book" aria-hidden="true"></i> Publications
+                </h1>
+                <div class="space-y-6" id="publicationsList">
+                    <!-- Publication items will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </main>
 
-<script>
-    function initPage(){
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        
-        const publicationsList = document.getElementById('publicationsList');
-        const resumePublications = resumeData.publications;
-        
-        // Create a new DocumentFragment for publications
-        const fragment = document.createDocumentFragment();
-        
-        // Check if resumePublications exists before trying to use it
-        if (resumePublications && Array.isArray(resumePublications)) {
-            resumePublications.forEach(pub => {
-                const div = document.createElement('div');
-                const authorList = pub.authors.map(name => (name === resumeData.name ? `<span class="underline font-bold text-white">${resumeData.name}</span>` : name)).join(", ");
-                div.innerHTML = `
-                    <div class="flex flex-col">
-                        <h3 class="text-xl font-semibold text-cyan-200 break-words">${pub.title}</h3>
-                        ${pub.award ? `<p class="text-pink-200 mt-1 font-medium">${pub.award}</p>` : ''}
-                        <p class="text-gray-200 mt-1 break-words">${authorList}</p>
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
-                            <em class="text-yellow-200 text-sm">${pub.venue}, ${pub.year}</em>
-                            <div class="flex space-x-4">
-                                ${pub.links?.paper ? `<a href="${pub.links.paper}" class="text-red-300 hover:text-red-100 transition-colors" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf text-lg" aria-hidden="true"></i></a>` : ''}
-                                ${pub.links?.github ? `<a href="${pub.links.github}" class="text-white hover:text-blue-200 transition-colors" target="_blank" aria-label="GitHub"><i class="fab fa-github text-lg" aria-hidden="true"></i></a>` : ''}
-                                ${pub.links?.presentation ? `<a href="${pub.links.presentation}" class="text-orange-300 hover:text-orange-100 transition-colors" target="_blank" aria-label="Presentation"><i class="fa-solid fa-file-powerpoint text-lg" aria-hidden="true"></i></a>` : ''}
-                            </div>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-4 shadow-md">
+        <div class="max-w-5xl mx-auto text-center">
+            <small class="text-gray-400 dark:text-gray-400">
+                &copy; <span id="currentYear"></span> Tapas Rout. All rights reserved. 
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        let resumeData = null;
+
+        function toggleMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeToggleIcons();
+        }
+
+        function updateThemeToggleIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.getElementById('theme-toggle-dark-icon').classList.toggle('hidden', isDark);
+            document.getElementById('theme-toggle-light-icon').classList.toggle('hidden', !isDark);
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            updateThemeToggleIcons();
+        }
+
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
+
+        function createPublicationElement(pub) {
+            const div = document.createElement('div');
+            const authorList = pub.authors.map(name => (name === resumeData.name ? `<span class="underline font-bold text-primary dark:text-accent">${resumeData.name}</span>` : name)).join(", ");
+            div.innerHTML = `
+                <div class="flex flex-col">
+                    <h3 class="text-xl font-semibold text-primary dark:text-accent break-words">${pub.title}</h3>
+                    ${pub.award ? `<p class="text-pink-600 dark:text-pink-400 mt-1 font-medium">${pub.award}</p>` : ''}
+                    <p class="text-gray-600 dark:text-gray-300 mt-1 break-words">${authorList}</p>
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
+                        <em class="text-yellow-600 dark:text-yellow-400 text-sm">${pub.venue}, ${pub.year}</em>
+                        <div class="flex space-x-4">
+                            ${pub.links?.paper ? `<a href="${pub.links.paper}" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 transition-colors" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf text-lg" aria-hidden="true"></i></a>` : ''}
+                            ${pub.links?.github ? `<a href="${pub.links.github}" class="text-primary dark:text-accent hover:text-purple-800 dark:hover:text-yellow-500 transition-colors" target="_blank" aria-label="GitHub"><i class="fab fa-github text-lg" aria-hidden="true"></i></a>` : ''}
+                            ${pub.links?.presentation ? `<a href="${pub.links.presentation}" class="text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-200 transition-colors" target="_blank" aria-label="Presentation"><i class="fa-solid fa-file-powerpoint text-lg" aria-hidden="true"></i></a>` : ''}
                         </div>
                     </div>
-                `;
-                div.className = "p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-cyan-500";
-                fragment.appendChild(div);
+                </div>
+            `;
+            div.className = "p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md border-l-4 border-primary dark:border-accent";
+            return div;
+        }
+
+        function populatePublications() {
+            const publicationsList = document.getElementById('publicationsList');
+            const fragment = document.createDocumentFragment();
+            
+            if (resumeData.publications && Array.isArray(resumeData.publications)) {
+                resumeData.publications.forEach(pub => {
+                    fragment.appendChild(createPublicationElement(pub));
+                });
+            }
+            
+            publicationsList.appendChild(fragment);
+            document.getElementById('publications').classList.remove('opacity-0');
+        }
+
+        function initPage() {
+            initTheme();
+            initMobileMenu();
+            populatePublications();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            document.querySelectorAll('[data-field]').forEach(element => {
+                const field = element.getAttribute('data-field');
+                const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
+                if (element.tagName === 'IMG') {
+                    element.src = value;
+                } else {
+                    element.textContent = value;
+                }
             });
         }
-        
-        // Check if publicationsList exists before appending to it
-        if (publicationsList) {
-            publicationsList.appendChild(fragment);
-        }
-        
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Add animation for publications section
-        setTimeout(() => {
-            const element = document.getElementById('publications');
-            if (element) {
-                element.classList.remove('opacity-0');
-                element.classList.add('opacity-100');
-            }
-        }, 100);
-        
-        document.querySelectorAll('[data-field]').forEach(element => {
-            const field = element.getAttribute('data-field');
-            const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
-            element.tagName === 'IMG' ? element.src = value : element.textContent = value;
-        });
-    }
 
-    let resumeData = null;  // Global variable to store JSON
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        // Fetch the preloaded JSON
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                resumeData = data;  // Assign JSON to variable
-                initPage();
-            })
-            .catch(error => console.error('Error loading JSON:', error));
-    });
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    resumeData = data;
+                    initPage();
+                })
+                .catch(error => console.error('Error loading JSON:', error));
+
+            document.getElementById('theme-toggle').addEventListener('click', toggleMode);
+        });
+    </script>
+</body>
+</html>
