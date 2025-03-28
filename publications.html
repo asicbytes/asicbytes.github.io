@@ -110,18 +110,44 @@
             <a href="projects.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
          </div>
       </nav>
+      
       <!-- Main Content -->
       <main class="flex-1 bg-gray-50 dark:bg-gray-900">
          <div class="max-w-5xl mx-auto my-8 px-6">
             <div id="publications" class="opacity-0 transition-opacity duration-500 ease-in-out">
                <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Publications</h1>
                <p class="text-gray-600 dark:text-gray-400 mb-6">Key research works published in reputed journals and conferences</p>
+               
+               <!-- Search and Filter Controls -->
+               <div class="mb-8">
+                  <div class="flex flex-col md:flex-row gap-4">
+                     <div class="flex-grow">
+                        <div class="relative">
+                           <input type="text" id="publication-search" placeholder="Search publications..." class="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                           <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+                        </div>
+                     </div>
+                     <div class="flex-shrink-0">
+                        <select id="year-filter" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                           <option value="all">All Years</option>
+                           <!-- Year options will be populated dynamically -->
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               
                <div class="space-y-4" id="publicationsList">
                   <!-- Publication items will be inserted here -->
+               </div>
+               
+               <!-- No results message -->
+               <div id="no-results" class="hidden text-center py-8">
+                  <p class="text-gray-600 dark:text-gray-400">No publications match your search criteria.</p>
                </div>
             </div>
          </div>
       </main>
+      
       <!-- Footer -->
       <footer class="bg-white dark:bg-gray-800 py-6 border-t border-gray-200 dark:border-gray-700">
          <div class="max-w-5xl mx-auto px-4 text-center">
@@ -130,8 +156,10 @@
             </small>
          </div>
       </footer>
+      
       <script>
          let resumeData = null;
+         let allPublications = [];
          
          function toggleMode() {
              const html = document.documentElement;
@@ -179,7 +207,60 @@
                  </div>
              `;
              div.className = "p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm publication-card card";
+             div.setAttribute('data-year', pub.year);
+             div.setAttribute('data-title', pub.title.toLowerCase());
+             div.setAttribute('data-authors', pub.authors.join(' ').toLowerCase());
              return div;
+         }
+         
+         function populateYearFilter() {
+            const yearFilter = document.getElementById('year-filter');
+            const years = new Set();
+            
+            // Extract unique years from publications
+            resumeData.publications.forEach(pub => {
+               years.add(pub.year);
+            });
+            
+            // Sort years in descending order
+            const sortedYears = Array.from(years).sort((a, b) => b - a);
+            
+            // Add year options to the filter
+            sortedYears.forEach(year => {
+               const option = document.createElement('option');
+               option.value = year;
+               option.textContent = year;
+               yearFilter.appendChild(option);
+            });
+         }
+         
+         function filterPublications() {
+            const searchTerm = document.getElementById('publication-search').value.toLowerCase();
+            const yearFilter = document.getElementById('year-filter').value;
+            const publicationElements = document.querySelectorAll('#publicationsList > div');
+            let visibleCount = 0;
+            
+            publicationElements.forEach(element => {
+               const year = element.getAttribute('data-year');
+               const title = element.getAttribute('data-title');
+               const authors = element.getAttribute('data-authors');
+               
+               // Check if publication matches both search term and year filter
+               const matchesSearch = searchTerm === '' || 
+                                    title.includes(searchTerm) || 
+                                    authors.includes(searchTerm);
+               const matchesYear = yearFilter === 'all' || year === yearFilter;
+               
+               if (matchesSearch && matchesYear) {
+                  element.classList.remove('hidden');
+                  visibleCount++;
+               } else {
+                  element.classList.add('hidden');
+               }
+            });
+            
+            // Show/hide no results message
+            document.getElementById('no-results').classList.toggle('hidden', visibleCount > 0);
          }
          
          function populatePublications() {
@@ -187,12 +268,25 @@
              const fragment = document.createDocumentFragment();
              
              if (resumeData.publications && Array.isArray(resumeData.publications)) {
-                 resumeData.publications.forEach(pub => {
+                 // Store all publications for filtering
+                 allPublications = resumeData.publications;
+                 
+                 // Sort publications by year (newest first)
+                 allPublications.sort((a, b) => b.year - a.year);
+                 
+                 allPublications.forEach(pub => {
                      fragment.appendChild(createPublicationElement(pub));
                  });
              }
              
              publicationsList.appendChild(fragment);
+             
+             // Populate year filter after publications are loaded
+             populateYearFilter();
+             
+             // Add event listeners for filtering
+             document.getElementById('publication-search').addEventListener('input', filterPublications);
+             document.getElementById('year-filter').addEventListener('change', filterPublications);
              
              // Fade in the publications section
              setTimeout(() => {
