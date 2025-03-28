@@ -23,10 +23,6 @@
          color: #63B3ED;
          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
          }
-         
-
-
-        
       </style>
    </head>
    <body class="bg-gray-900 text-gray-100 font-sans antialiased">
@@ -51,302 +47,319 @@
          </div>
       </nav>
       <div class="max-w-5xl mx-auto my-3 p-4 grid gap-6">
-         <div class="p-8 flex flex-col md:flex-row items-center md:items-start gap-8 opacity-0 transition-opacity duration-1000 ease-in-out" id="profile">
-    <img data-field="profilePicture" src="" alt="Profile Picture" class="w-40 h-40 md:w-48 md:h-48 shadow-lg object-cover rounded-full border-4 border-blue-500 hover:border-blue-400 transition-colors duration-300">
-    <div class="flex-1 text-center md:text-left space-y-4">
-        <div>
-            <h1 class="text-4xl font-bold mb-2 text-white brand-name" data-field="name"></h1>
-            <p class="text-xl text-gray-300"><span data-field="title"></span>, <span data-field="organization"></span></p>
-        </div>
-        <div id="interests" class="flex flex-wrap justify-center md:justify-start gap-2">
-            <!-- Interests will be populated here -->
-        </div>
-        <div class="flex flex-wrap justify-center md:justify-start gap-3">
-            <a href="#" class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300" data-link="github">
-                <i class="fab fa-github text-lg"></i> GitHub
-            </a>
-            <a href="#" class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300" data-link="googleScholar">
-                <i class="fas fa-graduation-cap text-lg"></i> Scholar
-            </a>
-            <a href="#" class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300" data-link="linkedin">
-                <i class="fab fa-linkedin text-lg"></i> LinkedIn
-            </a>
-            <a href="#" class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300" data-link="website">
-                <i class="fas fa-globe text-lg"></i> Website
-            </a>
-            <a href="#" class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300" data-link="email">
-                <i class="fas fa-envelope text-lg"></i> Email
-            </a>
-        </div>
-    </div>
-</div>
-
+         <div class="p-8 flex flex-col md:flex-row items-center md:items-start gap-8 opacity-0 transition-opacity duration-1000 ease-in-out"
+            id="profile">
+            <img data-field="profilePicture" src="" alt="Profile Picture"
+               class="w-40 h-40 md:w-48 md:h-48 shadow-lg object-cover rounded-full border-4 border-blue-500 hover:border-blue-400 transition-colors duration-300">
+            <div class="flex-1 text-center md:text-left space-y-4">
+               <div>
+                  <h1 class="text-4xl font-bold mb-2 text-white brand-name" data-field="name"></h1>
+                  <p class="text-xl text-gray-300"><span data-field="title"></span>, <span
+                     data-field="organization"></span></p>
+               </div>
+               <div id="interests" class="flex flex-wrap justify-center md:justify-start gap-2">
+                  <!-- Interests will be populated here -->
+               </div>
+               <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                  <a href="#"
+                     class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300"
+                     data-link="github">
+                  <i class="fab fa-github text-lg"></i> GitHub
+                  </a>
+                  <a href="#"
+                     class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300"
+                     data-link="googleScholar">
+                  <i class="fas fa-graduation-cap text-lg"></i> Scholar
+                  </a>
+                  <a href="#"
+                     class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300"
+                     data-link="linkedin">
+                  <i class="fab fa-linkedin text-lg"></i> LinkedIn
+                  </a>
+                  <a href="#"
+                     class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300"
+                     data-link="website">
+                  <i class="fas fa-globe text-lg"></i> Website
+                  </a>
+                  <a href="#"
+                     class="btn-primary flex items-center gap-2 social-icon hover:bg-blue-600 transition-colors duration-300"
+                     data-link="email">
+                  <i class="fas fa-envelope text-lg"></i> Email
+                  </a>
+               </div>
+            </div>
+         </div>
          <!-- Skills section -->
-         <div id="skills" class="px-6 opacity-0 transition-opacity duration-1000 ease-in-out" style="scroll-margin-top: 5rem;">
+         <div id="skills" class="px-6 opacity-0 transition-opacity duration-1000 ease-in-out"
+            style="scroll-margin-top: 5rem;">
             <h2 class="text-2xl font-semibold text-blue-400 mb-4">
                <i class="fas fa-code mr-2" aria-hidden="true"></i>Skills
-             </h2>
+            </h2>
             <div class="space-y-4" id="skillsList">
             </div>
          </div>
          <!-- Education section -->
-         <div id="education" class="px-6 opacity-0 transition-opacity duration-1000 ease-in-out" style="scroll-margin-top: 5rem;">
+         <div id="education" class="px-6 opacity-0 transition-opacity duration-1000 ease-in-out"
+            style="scroll-margin-top: 5rem;">
             <h2 class="text-2xl font-semibold text-blue-400 mb-4">
                <i class="fas fa-graduation-cap mr-2" aria-hidden="true"></i>Education
-             </h2>
-             
+            </h2>
             <div class="mt-4 space-y-8" id="educationList">
                <!-- Education items will be inserted here -->
             </div>
          </div>
          <!-- Work Experience section -->
-         <div id="experience" class="p-6 opacity-0 transition-opacity duration-1000 ease-in-out" style="scroll-margin-top: 5rem;">
+         <div id="experience" class="p-6 opacity-0 transition-opacity duration-1000 ease-in-out"
+            style="scroll-margin-top: 5rem;">
             <h2 class="text-2xl font-semibold text-blue-400 mb-4">
                <i class="fas fa-briefcase mr-2" aria-hidden="true"></i>Work Experience
-             </h2>
+            </h2>
             <div class="mt-4 space-y-8" id="experienceList">
                <!-- Experience items will be inserted here -->
             </div>
             <p class="mt-4 text-gray-400">
-               <a href="experience.html" class="text-blue-400 hover:text-blue-300">Click here to view all work experience</a>
+               <a href="experience.html" class="text-blue-400 hover:text-blue-300">Click here to view all work
+               experience</a>
             </p>
          </div>
          <!-- Publications section -->
-         <div id="publications" class="px-6 opacity-0 transition-opacity duration-1000 ease-in-out" style="scroll-margin-top: 5rem;">
+         <div id="publications" class="px-6 opacity-0 transition-opacity duration-1000 ease-in-out"
+            style="scroll-margin-top: 5rem;">
             <h2 class="text-2xl font-semibold text-blue-400 mb-4">
                <i class="fas fa-book mr-2" aria-hidden="true"></i>Publications
-             </h2>
+            </h2>
             <ol class="mt-2 space-y-2 list-decimal list-inside text-gray-400" id="publicationsList">
                <!-- Publication items will be inserted here -->
             </ol>
             <p class="mt-4 text-gray-400">
-               <a href="publications.html" class="text-blue-400 hover:text-blue-300">Click here to view all publications</a>
+               <a href="publications.html" class="text-blue-400 hover:text-blue-300">Click here to view all
+               publications</a>
             </p>
          </div>
       </div>
       <footer class="bg-gray-800 text-white py-4 shadow-md">
          <div class="max-w-5xl mx-auto text-center">
             <small class="text-gray-400">
-            © <span id="currentYear"></span> <span data-field="name"></span>. All rights reserved. 
+            © <span id="currentYear"></span> <span data-field="name"></span>. All rights reserved.
             </small>
          </div>
       </footer>
       <script>
-         function initPage(){
+         function initPage() {
              const mobileMenuButton = document.getElementById('mobile-menu-button');
-         	const mobileMenu = document.getElementById('mobile-menu');
+             const mobileMenu = document.getElementById('mobile-menu');
          
-         mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+             mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
          
          
-         const interestsList = resumeData.interests 
-             
+             const interestsList = resumeData.interests
+         
              const interestsContainer = document.getElementById('interests');
-    
-    // Clear existing content
-    interestsContainer.innerHTML = '';
-    
-    // Create and append new spans for each interest
-    interestsList.forEach(interest => {
-        const span = document.createElement('span');
-        span.className = 'bg-blue-500 bg-opacity-20 text-blue-200 px-3 py-1 rounded-full text-sm';
-        span.textContent = interest;
-        interestsContainer.appendChild(span);
-    });
+         
+             // Clear existing content
+             interestsContainer.innerHTML = '';
+         
+             // Create and append new spans for each interest
+             interestsList.forEach(interest => {
+                 const span = document.createElement('span');
+                 span.className = 'bg-blue-500 bg-opacity-20 text-blue-200 px-3 py-1 rounded-full text-sm';
+                 span.textContent = interest;
+                 interestsContainer.appendChild(span);
+             });
          
          
          
-         const socialIcons = document.querySelectorAll('.social-icon');
-         const fragment = document.createDocumentFragment();
+             const socialIcons = document.querySelectorAll('.social-icon');
+             const fragment = document.createDocumentFragment();
          
-         socialIcons.forEach(icon => {
-             const linkType = icon.getAttribute('data-link');
-             if (linkType !== 'email') {
-                 icon.href = resumeData.socialLinks[linkType];
-             } else {
-                 icon.addEventListener('click', handleEmailLink);
-                 icon.addEventListener('mouseenter', handleEmailLink);
+             socialIcons.forEach(icon => {
+                 const linkType = icon.getAttribute('data-link');
+                 if (linkType !== 'email') {
+                     icon.href = resumeData.socialLinks[linkType];
+                 } else {
+                     icon.addEventListener('click', handleEmailLink);
+                     icon.addEventListener('mouseenter', handleEmailLink);
+                 }
+             });
+         
+             function handleEmailLink(event) {
+                 event.preventDefault();
+                 this.href = `mailto:${resumeData.email}`;
+                 if (event.type === 'click') window.location.href = this.href;
              }
-         });
          
-         function handleEmailLink(event) {
-             event.preventDefault();
-             this.href = `mailto:${resumeData.email}`;
-             if (event.type === 'click') window.location.href = this.href;
+         
+             document.querySelectorAll('[data-field]').forEach(element => {
+                 const field = element.getAttribute('data-field');
+                 const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
+                 element.tagName === 'IMG' ? element.src = value : element.textContent = value;
+             });
+         
+         
+             const resumeSkills = resumeData.skills;
+             const resumeEducation = resumeData.education
+             const resumeExperience = resumeData.experience
+             const resumePublications = resumeData.publications
+         
+         
+             const skillsList = document.getElementById('skillsList');
+             const educationList = document.getElementById('educationList');
+             const experienceList = document.getElementById('experienceList');
+             const publicationsList = document.getElementById('publicationsList');
+         
+             // Create a single card for all skills
+             const skillsCard = document.createElement('div');
+             skillsCard.className = 'mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-blue-400';
+         
+             // Create a container for all skill categories
+             const skillsContent = document.createElement('div');
+             skillsContent.className = 'space-y-4'; // Add spacing between skill categories
+         
+             // Process each skill category
+             resumeSkills.forEach(skill => {
+                 const skillRow = document.createElement('div');
+                 // Keep your original grid structure
+                 skillRow.className = 'grid grid-cols-1 sm:grid-cols-4';
+         
+                 // Create the category heading
+                 const heading = document.createElement('h3');
+                 heading.className = 'font-semibold text-lg text-gray-300 sm:col-span-1';
+                 heading.textContent = `${skill.category}:`;
+                 skillRow.appendChild(heading);
+         
+                 // Create a container for the skill bubbles
+                 const skillsContainer = document.createElement('div');
+                 skillsContainer.className = 'flex flex-wrap gap-2 sm:col-span-3';
+         
+                 // Create individual bubble for each skill
+                 skill.values.forEach(skillItem => {
+                     const bubble = document.createElement('span');
+                     bubble.className = 'px-3 py-1 bg-gray-700 rounded-full text-gray-300 text-sm inline-block mb-2';
+                     bubble.textContent = skillItem;
+                     skillsContainer.appendChild(bubble);
+                 });
+         
+                 skillRow.appendChild(skillsContainer);
+                 skillsContent.appendChild(skillRow);
+             });
+         
+             // Add all skill categories to the card
+             skillsCard.appendChild(skillsContent);
+         
+             // Add the card to the document
+             fragment.appendChild(skillsCard);
+             skillsList.appendChild(fragment);
+             skillsList.classList.remove("hidden");
+         
+         
+         
+         
+             resumeEducation.forEach(edu => {
+                 const div = document.createElement('div');
+                 div.className = 'mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-blue-400';
+                 div.innerHTML = `
+         <div class="flex items-center gap-3 mb-3">
+             <img src="${edu.logo}" alt="${edu.institution} Logo" class="w-10 h-10 object-cover rounded-full flex-shrink-0 border-2 border-gray-700">
+             <div class="flex-grow min-w-0">
+                 <h3 class="text-lg font-semibold text-white truncate">${edu.institution}</h3>
+                 <div class="flex flex-wrap justify-between items-center text-sm">
+                     <p class="text-blue-200 truncate mr-2 font-medium">${edu.degree}</p>
+                     <p class="text-yellow-200 italic text-xs sm:text-sm flex-shrink-0">${edu.period}</p>
+                 </div>
+             </div>
+         </div>
+         <p class="text-gray-200 text-sm leading-relaxed">${edu.description}</p>
+         `;
+                 fragment.appendChild(div);
+             });
+             educationList.appendChild(fragment);
+         
+         
+         
+         
+         
+             resumeExperience.slice(0, 3).forEach(exp => {
+                 const div = document.createElement('div');
+                 div.className = 'mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-blue-400';
+                 div.innerHTML = `
+         <div class="flex items-center gap-3 mb-3">
+             <img src="${exp.logo}" alt="${exp.company} Logo" class="w-10 h-10 object-cover rounded-full flex-shrink-0 border-2 border-gray-700">
+             <div class="flex-grow min-w-0">
+                 <h3 class="text-lg font-semibold text-white truncate">${exp.position}</h3>
+                 <div class="flex flex-wrap justify-between items-center text-sm">
+                     <p class="text-blue-200 truncate mr-2 font-medium">${exp.company}</p>
+                     <p class="text-yellow-200 italic text-xs sm:text-sm flex-shrink-0">${exp.period}</p>
+                 </div>
+             </div>
+         </div>
+         <p class="text-gray-200 text-sm leading-relaxed">${exp.description}</p>
+         `;
+                 fragment.appendChild(div);
+             });
+             experienceList.appendChild(fragment);
+         
+         
+         
+         
+         
+             resumePublications.slice(0, 3).forEach(pub => {
+                 const div = document.createElement('div');
+                 const authorList = pub.authors.map(name => (name === resumeData.name ? `<span class="underline font-bold text-white">${resumeData.name}</span>` : name)).join(", ");
+                 div.innerHTML = `
+         <h3 class="text-lg font-semibold text-cyan-200 break-words">${pub.title}</h3>
+         <p class="text-pink-200 mt-1 font-medium">${pub.award}</p>
+         <p class="text-gray-200 mt-1 break-words">${authorList}</p>
+         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
+             <em class="text-yellow-200 text-sm">${pub.venue}, ${pub.year}</em>
+             <div class="flex space-x-4">
+                 ${pub.links.paper ? `<a href="${pub.links.paper}" class="text-red-500 hover:text-red-300 transition-colors" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf text-lg" aria-hidden="true"></i></a>` : ''}
+                 ${pub.links.github ? `<a href="${pub.links.github}" class="text-white hover:text-blue-200 transition-colors" target="_blank" aria-label="GitHub"><i class="fab fa-github text-lg" aria-hidden="true"></i></a>` : ''}
+                 ${pub.links.presentation ? `<a href="${pub.links.presentation}" class="text-orange-500 hover:text-orange-300 transition-colors" target="_blank" aria-label="Presentation"><i class="fa-solid fa-file-powerpoint text-lg" aria-hidden="true"></i></a>` : ''}
+             </div>
+         </div>
+         `;
+                 div.className = "mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-cyan-500";
+                 fragment.appendChild(div);
+             });
+             publicationsList.appendChild(fragment);
+         
+         
+         
+         
+         
+         
+             document.getElementById('currentYear').textContent = new Date().getFullYear();
+         
+         
+             const sections = ['profile', 'skills', 'education', 'experience', 'publications'];
+         
+             sections.forEach((id, index) => {
+                 setTimeout(() => {
+                     const element = document.getElementById(id);
+                     if (element) {
+                         element.classList.remove('opacity-0');
+                         element.classList.add('opacity-100');
+                     }
+                 }, 100 + index * 300); // Each section gets 500ms more delay
+             });
+         
+         
          }
          
-         
-         document.querySelectorAll('[data-field]').forEach(element => {
-             const field = element.getAttribute('data-field');
-             const value = field.split('.').reduce((obj, key) => obj[key], resumeData);
-             element.tagName === 'IMG' ? element.src = value : element.textContent = value;
-         });
-         
-         
-         const resumeSkills = resumeData.skills;
-         const resumeEducation = resumeData.education
-         const resumeExperience = resumeData.experience
-         const resumePublications = resumeData.publications
-         
-         
-         const skillsList = document.getElementById('skillsList');
-         const educationList = document.getElementById('educationList');
-         const experienceList = document.getElementById('experienceList');
-         const publicationsList = document.getElementById('publicationsList');
-         
-// Create a single card for all skills
-const skillsCard = document.createElement('div');
-skillsCard.className = 'mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-blue-400';
-
-// Create a container for all skill categories
-const skillsContent = document.createElement('div');
-skillsContent.className = 'space-y-4'; // Add spacing between skill categories
-
-// Process each skill category
-resumeSkills.forEach(skill => {
-    const skillRow = document.createElement('div');
-    // Keep your original grid structure
-    skillRow.className = 'grid grid-cols-1 sm:grid-cols-4';
-    
-    // Create the category heading
-    const heading = document.createElement('h3');
-    heading.className = 'font-semibold text-lg text-gray-300 sm:col-span-1';
-    heading.textContent = `${skill.category}:`;
-    skillRow.appendChild(heading);
-    
-    // Create a container for the skill bubbles
-    const skillsContainer = document.createElement('div');
-    skillsContainer.className = 'flex flex-wrap gap-2 sm:col-span-3';
-    
-    // Create individual bubble for each skill
-    skill.values.forEach(skillItem => {
-        const bubble = document.createElement('span');
-        bubble.className = 'px-3 py-1 bg-gray-700 rounded-full text-gray-300 text-sm inline-block mb-2';
-        bubble.textContent = skillItem;
-        skillsContainer.appendChild(bubble);
-    });
-    
-    skillRow.appendChild(skillsContainer);
-    skillsContent.appendChild(skillRow);
-});
-
-// Add all skill categories to the card
-skillsCard.appendChild(skillsContent);
-
-// Add the card to the document
-fragment.appendChild(skillsCard);
-skillsList.appendChild(fragment);
-skillsList.classList.remove("hidden");
-
-
-         
-         
-         resumeEducation.forEach(edu => {
-    const div = document.createElement('div');
-    div.className = 'mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-blue-400';
-    div.innerHTML = `
-        <div class="flex items-center gap-3 mb-3">
-            <img src="${edu.logo}" alt="${edu.institution} Logo" class="w-10 h-10 object-cover rounded-full flex-shrink-0 border-2 border-gray-700">
-            <div class="flex-grow min-w-0">
-                <h3 class="text-lg font-semibold text-white truncate">${edu.institution}</h3>
-                <div class="flex flex-wrap justify-between items-center text-sm">
-                    <p class="text-blue-200 truncate mr-2 font-medium">${edu.degree}</p>
-                    <p class="text-yellow-200 italic text-xs sm:text-sm flex-shrink-0">${edu.period}</p>
-                </div>
-            </div>
-        </div>
-        <p class="text-gray-200 text-sm leading-relaxed">${edu.description}</p>
-    `;
-    fragment.appendChild(div);
-});
-educationList.appendChild(fragment);
-
-
-
-
-         
-resumeExperience.slice(0, 3).forEach(exp => {
-    const div = document.createElement('div');
-    div.className = 'mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-blue-400';
-    div.innerHTML = `
-        <div class="flex items-center gap-3 mb-3">
-            <img src="${exp.logo}" alt="${exp.company} Logo" class="w-10 h-10 object-cover rounded-full flex-shrink-0 border-2 border-gray-700">
-            <div class="flex-grow min-w-0">
-                <h3 class="text-lg font-semibold text-white truncate">${exp.position}</h3>
-                <div class="flex flex-wrap justify-between items-center text-sm">
-                    <p class="text-blue-200 truncate mr-2 font-medium">${exp.company}</p>
-                    <p class="text-yellow-200 italic text-xs sm:text-sm flex-shrink-0">${exp.period}</p>
-                </div>
-            </div>
-        </div>
-        <p class="text-gray-200 text-sm leading-relaxed">${exp.description}</p>
-    `;
-    fragment.appendChild(div);
-});
-experienceList.appendChild(fragment);
-
-
-
-         
-         
-resumePublications.slice(0, 3).forEach(pub => {
-    const div = document.createElement('div');
-    const authorList = pub.authors.map(name => (name === resumeData.name ? `<span class="underline font-bold text-white">${resumeData.name}</span>` : name)).join(", ");
-    div.innerHTML = `
-        <h3 class="text-lg font-semibold text-cyan-200 break-words">${pub.title}</h3>
-        <p class="text-pink-200 mt-1 font-medium">${pub.award}</p>
-        <p class="text-gray-200 mt-1 break-words">${authorList}</p>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
-            <em class="text-yellow-200 text-sm">${pub.venue}, ${pub.year}</em>
-            <div class="flex space-x-4">
-                ${pub.links.paper ? `<a href="${pub.links.paper}" class="text-red-500 hover:text-red-300 transition-colors" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf text-lg" aria-hidden="true"></i></a>` : ''}
-                ${pub.links.github ? `<a href="${pub.links.github}" class="text-white hover:text-blue-200 transition-colors" target="_blank" aria-label="GitHub"><i class="fab fa-github text-lg" aria-hidden="true"></i></a>` : ''}
-                ${pub.links.presentation ? `<a href="${pub.links.presentation}" class="text-orange-500 hover:text-orange-300 transition-colors" target="_blank" aria-label="Presentation"><i class="fa-solid fa-file-powerpoint text-lg" aria-hidden="true"></i></a>` : ''}
-            </div>
-        </div>
-    `;
-    div.className = "mb-6 p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-cyan-500";
-    fragment.appendChild(div);
-});
-publicationsList.appendChild(fragment);
-
-
-
-         
-         
-         
-         document.getElementById('currentYear').textContent = new Date().getFullYear();
-         
-         
-         const sections = ['profile', 'skills', 'education', 'experience', 'publications'];
-         
-         sections.forEach((id, index) => {
-         setTimeout(() => {
-             const element = document.getElementById(id);
-             if (element) {
-                 element.classList.remove('opacity-0');
-                 element.classList.add('opacity-100');
-             }
-         }, 100 + index * 300); // Each section gets 500ms more delay
-         });
-         
-         
-         }
-             
          let resumeData = null;  // Global variable to store JSON
          
          
-         document.addEventListener('DOMContentLoaded', function() {
-            
-         // Fetch the preloaded JSON
-         fetch('data.json')
-             .then(response => response.json())
-             .then(data => {
-                 resumeData = data;  // Assign JSON to variable
-                 initPage();
-             })
-             .catch(error => console.error('Error loading JSON:', error));
-             
+         document.addEventListener('DOMContentLoaded', function () {
+         
+             // Fetch the preloaded JSON
+             fetch('data.json')
+                 .then(response => response.json())
+                 .then(data => {
+                     resumeData = data;  // Assign JSON to variable
+                     initPage();
+                 })
+                 .catch(error => console.error('Error loading JSON:', error));
+         
          
          });
          

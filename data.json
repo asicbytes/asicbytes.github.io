@@ -65,7 +65,7 @@
       "title": "Advanced SoC Architectures for Low-Power AI Applications",
       "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
       "year": 2025,
-      "award": "",
+      "award": "some award",
       "links": {
         "paper": "https://example.com/paper1",
         "github": "https://github.com/asicbytes/soc-ai-lowpower",
