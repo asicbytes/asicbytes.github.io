@@ -59,6 +59,72 @@
       "description": "Worked on the development of high-speed communication protocols for embedded systems..."
     }
   ],
+  "projects": [
+    {
+      "title": "RISC-V Based Processor Design",
+      "description": "Designed and implemented a 5-stage pipelined RISC-V processor with branch prediction and cache memory on FPGA",
+      "category": "hardware",
+      "status": "completed",
+      "technologies": ["Verilog", "FPGA", "RISC-V", "Computer Architecture"],
+      "link": "https://github.com/username/riscv-processor"
+    },
+    {
+      "title": "Machine Learning Hardware Accelerator",
+      "description": "Developed a custom hardware accelerator for convolutional neural networks with 5x performance improvement over CPU implementations",
+      "category": "ml",
+      "status": "completed",
+      "technologies": ["SystemVerilog", "ASIC", "Machine Learning", "Neural Networks"],
+      "link": "https://github.com/username/ml-accelerator"
+    },
+    {
+      "title": "Low-Power IoT Sensor Node",
+      "description": "Created an ultra-low power sensor node for environmental monitoring with 6-month battery life",
+      "category": "hardware",
+      "status": "in-progress",
+      "technologies": ["Embedded C", "ARM Cortex-M0", "PCB Design", "IoT"],
+      "link": null
+    },
+    {
+      "title": "Python Framework for Hardware Verification",
+      "description": "Built a Python-based verification framework for ASIC designs that reduced verification time by 40%",
+      "category": "software",
+      "status": "completed",
+      "technologies": ["Python", "SystemVerilog", "UVM", "Verification"],
+      "link": "https://github.com/username/hw-verify"
+    },
+    {
+      "title": "FPGA-Based Image Processing System",
+      "description": "Implemented real-time image processing algorithms on FPGA with HDMI input/output capability",
+      "category": "fpga",
+      "status": "completed",
+      "technologies": ["VHDL", "FPGA", "Image Processing", "Computer Vision"],
+      "link": "https://github.com/username/fpga-image-proc"
+    },
+    {
+      "title": "Approximate Computing for Neural Networks",
+      "description": "Researched and implemented approximate computing techniques for neural network inference, achieving 3x energy efficiency",
+      "category": "ml",
+      "status": "in-progress",
+      "technologies": ["C++", "TensorFlow", "FPGA", "Approximate Computing"],
+      "link": null
+    },
+    {
+      "title": "Open-Source EDA Tool Development",
+      "description": "Contributing to open-source EDA tools for analog circuit design and simulation",
+      "category": "software",
+      "status": "in-progress",
+      "technologies": ["C++", "Python", "Circuit Design", "EDA"],
+      "link": "https://github.com/username/open-eda"
+    },
+    {
+      "title": "Custom CPU Core for Edge AI",
+      "description": "Designing a specialized CPU core optimized for edge AI applications with custom instructions",
+      "category": "hardware",
+      "status": "planned",
+      "technologies": ["SystemVerilog", "ASIC", "Computer Architecture", "AI"],
+      "link": null
+    }
+  ],
   "publications": [
     {
       "authors": [ "Aarav Sharma", "Tapas Rout", "Kunal Reddy", "Neha Bansal"],

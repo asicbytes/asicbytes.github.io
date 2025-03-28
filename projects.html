@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | AsicBytes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="data.json" as="fetch" crossorigin="anonymous">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Google Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1a73e8', // Google blue
+                        secondary: '#34a853', // Google green
+                        accent: '#ea4335', // Google red
+                        neutral: '#fbbc05', // Google yellow
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Google Sans', sans-serif;
+        }
+        
+        .brand-name {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a73e8;
+            letter-spacing: -0.5px;
+        }
+        
+        .dark .brand-name {
+            color: #8ab4f8;
+        }
+        
+        .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        }
+        
+        .dark .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+        }
+        
+        .dark .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-card {
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.2s ease;
+        }
+        
+        .dark .project-card {
+            border-left: 4px solid #8ab4f8;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
+    <!-- Navigation Bar -->
+    <nav class="bg-white dark:bg-gray-800 elevation-1 sticky top-0 z-10">
+        <div class="max-w-5xl mx-auto flex justify-between items-center px-4 h-16">
+            <a href="/" class="brand-name">AsicBytes</a>
+            <div class="hidden md:flex space-x-6" id="desktop-menu">
+                <a href="education.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Education</a>
+                <a href="experience.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Experience</a>
+                <a href="publications.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Publications</a>
+                <a href="tutorials.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Tutorials</a>
+                <a href="projects.html" class="text-primary dark:text-blue-400 font-medium">Projects</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none" aria-label="Toggle dark mode">
+                    <span class="material-icons text-gray-600 dark:text-gray-400" id="theme-toggle-dark-icon">dark_mode</span>
+                    <span class="material-icons text-gray-600 dark:text-gray-400 hidden" id="theme-toggle-light-icon">light_mode</span>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none" aria-label="Menu">
+                    <span class="material-icons text-gray-600 dark:text-gray-400">menu</span>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+            <a href="education.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Education</a>
+            <a href="experience.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Experience</a>
+            <a href="publications.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Publications</a>
+            <a href="tutorials.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Tutorials</a>
+            <a href="projects.html" class="block py-3 px-6 text-primary dark:text-blue-400 bg-gray-100 dark:bg-gray-700">Projects</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="flex-1 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto my-8 px-6">
+            <div id="projects" class="opacity-0 transition-opacity duration-500 ease-in-out">
+                <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Projects</h1>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">Recent work I've completed or am currently working on</p>
+                
+                <!-- Search and Filter Controls -->
+                <div class="mb-8">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-grow">
+                            <div class="relative">
+                                <input type="text" id="project-search" placeholder="Search projects..." class="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <select id="category-filter" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="all">All Categories</option>
+                                <option value="hardware">Hardware Design</option>
+                                <option value="software">Software</option>
+                                <option value="fpga">FPGA</option>
+                                <option value="ml">Machine Learning</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-4" id="projectsList">
+                    <!-- Project items will be inserted here -->
+                </div>
+                
+                <!-- No results message -->
+                <div id="no-results" class="hidden text-center py-8">
+                    <p class="text-gray-600 dark:text-gray-400">No projects match your search criteria.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 py-6 border-t border-gray-200 dark:border-gray-700">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <small class="text-gray-500 dark:text-gray-400">
+            &copy; <span id="currentYear"></span> Tapas Rout. All rights reserved.
+            </small>
+        </div>
+    </footer>
+    
+    <script>
+        let resumeData = null;
+        let allProjects = [];
+        
+        function toggleMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeToggleIcons();
+        }
+        
+        function updateThemeToggleIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.getElementById('theme-toggle-dark-icon').classList.toggle('hidden', isDark);
+            document.getElementById('theme-toggle-light-icon').classList.toggle('hidden', !isDark);
+        }
+        
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            updateThemeToggleIcons();
+        }
+        
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
+        
+        function createProjectElement(project) {
+            const div = document.createElement('div');
+            
+            // Get category icon
+            let categoryIcon = 'memory';
+            let iconColor = 'text-blue-600 dark:text-blue-400';
+            
+            if (project.category === 'software') {
+                categoryIcon = 'code';
+                iconColor = 'text-green-600 dark:text-green-400';
+            } else if (project.category === 'fpga') {
+                categoryIcon = 'developer_board';
+                iconColor = 'text-purple-600 dark:text-purple-400';
+            } else if (project.category === 'ml') {
+                categoryIcon = 'psychology';
+                iconColor = 'text-orange-600 dark:text-orange-400';
+            }
+            
+            // Get status badge
+            let statusBadge = '';
+            if (project.status === 'completed') {
+                statusBadge = '<span class="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Completed</span>';
+            } else if (project.status === 'in-progress') {
+                statusBadge = '<span class="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">In Progress</span>';
+            } else if (project.status === 'planned') {
+                statusBadge = '<span class="bg-gray-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Planned</span>';
+            }
+            
+            div.innerHTML = `
+<a href="${project.link}" class="block text-inherit no-underline" target="_blank">
+  <div class="flex items-center">
+    <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+      <span class="material-icons ${iconColor}">${categoryIcon}</span>
+    </div>
+    <div class="flex-grow min-w-0">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">${project.title}</h3>
+        ${statusBadge}
+      </div>
+      <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">${project.description}</p>
+      <div class="flex mt-2 flex-wrap gap-1">
+        ${project.technologies.map(tech => `<span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">${tech}</span>`).join('')}
+      </div>
+    </div>
+  </div>
+</a>
+
+            `;
+            
+            div.className = "p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card";
+            div.setAttribute('data-category', project.category);
+            div.setAttribute('data-title', project.title.toLowerCase());
+            div.setAttribute('data-description', project.description.toLowerCase());
+            div.setAttribute('data-technologies', project.technologies.join(' ').toLowerCase());
+            
+            return div;
+        }
+        
+        function filterProjects() {
+            const searchTerm = document.getElementById('project-search').value.toLowerCase();
+            const categoryFilter = document.getElementById('category-filter').value;
+            const projectElements = document.querySelectorAll('#projectsList > div');
+            let visibleCount = 0;
+            
+            projectElements.forEach(element => {
+                const category = element.getAttribute('data-category');
+                const title = element.getAttribute('data-title');
+                const description = element.getAttribute('data-description');
+                const technologies = element.getAttribute('data-technologies');
+                
+                // Check if project matches both search term and category filter
+                const matchesSearch = searchTerm === '' || 
+                                     title.includes(searchTerm) || 
+                                     description.includes(searchTerm) ||
+                                     technologies.includes(searchTerm);
+                const matchesCategory = categoryFilter === 'all' || category === categoryFilter;
+                
+                if (matchesSearch && matchesCategory) {
+                    element.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    element.classList.add('hidden');
+                }
+            });
+            
+            // Show/hide no results message
+            document.getElementById('no-results').classList.toggle('hidden', visibleCount > 0);
+        }
+        
+        function populateProjects() {
+            const projectsList = document.getElementById('projectsList');
+            const fragment = document.createDocumentFragment();
+            
+            if (resumeData.projects && Array.isArray(resumeData.projects)) {
+                // Store all projects for filtering
+                allProjects = resumeData.projects;
+                
+                allProjects.forEach(project => {
+                    fragment.appendChild(createProjectElement(project));
+                });
+            }
+            
+            projectsList.appendChild(fragment);
+            
+            // Add event listeners for filtering
+            document.getElementById('project-search').addEventListener('input', filterProjects);
+            document.getElementById('category-filter').addEventListener('change', filterProjects);
+            
+            // Fade in the projects section
+            setTimeout(() => {
+                document.getElementById('projects').classList.remove('opacity-0');
+            }, 100);
+        }
+        
+        function initPage() {
+            initTheme();
+            initMobileMenu();
+            populateProjects();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    resumeData = data;
+                    initPage();
+                })
+                .catch(error => {
+                    console.error('Error loading JSON:', error);
+                    document.getElementById('projects').innerHTML = '<p class="text-center text-red-500">Failed to load project data. Please try again later.</p>';
+                    document.getElementById('projects').classList.remove('opacity-0');
+                });
+        
+            document.getElementById('theme-toggle').addEventListener('click', toggleMode);
+        });
+    </script>
+</body>
+</html>
