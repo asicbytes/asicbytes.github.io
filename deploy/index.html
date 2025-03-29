@@ -1,13 +1,1452 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
-    </head>
-    <body>
-        <h1>Welcome to the Home page!</h1>
-        <a href="/about">Go to About Page</a>
-    </body>
-</html>
+<html lang="en" class="light">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        AsicBytes
+    </title>
+    <!-- Add preload for critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap"
+        as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Google Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1a73e8', // Google blue
+                        secondary: '#34a853', // Google green
+                        accent: '#ea4335', // Google red
+                        neutral: '#fbbc05', // Google yellow
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Core styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .btn-primary {
+            @apply bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition-all duration-200;
+        }
+
+        .brand-name {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a73e8;
+            letter-spacing: -0.5px;
+        }
+
+        .dark .brand-name {
+            color: #8ab4f8;
+        }
+
+        .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        }
+
+        .dark .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+
+        .card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .dark .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-card {
+            border-left: 4px solid #1a73e8;
+        }
+
+        .dark .experience-card {
+            border-left: 4px solid #8ab4f8;
+        }
+
+        .card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+        }
+
+        .dark .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .publication-card {
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.2s ease;
+         }
+         
+         .dark .publication-card {
+            border-left: 4px solid #8ab4f8;
+         }
+         
+         .publication-card:hover {
+            transform: translateY(-2px);
+         }
+
+         .project-card {
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.2s ease;
+        }
+        
+        .dark .project-card {
+            border-left: 4px solid #8ab4f8;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body
+    class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
+
+
+    <div class="content-container flex flex-col min-h-screen">
+        <!-- Navigation Bar -->
+        <nav class="bg-white dark:bg-gray-800 elevation-1 sticky top-0 z-10">
+            <div class="max-w-5xl mx-auto flex justify-between items-center px-4 h-16">
+                <a href="/" class="brand-name">
+                    AsicBytes
+                </a>
+                <div class="hidden md:flex space-x-6" id="desktop-menu">
+                    <a href="education.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Education</a>
+                    <a href="experience.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Experience</a>
+                    <a href="publications.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Publications</a>
+                    <a href="tutorials.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Tutorials</a>
+                    <a href="projects.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Projects</a>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+                        aria-label="Toggle dark mode">
+                        <span class="material-icons text-gray-600 dark:text-gray-400"
+                            id="theme-toggle-dark-icon">dark_mode</span>
+                        <span class="material-icons text-gray-600 dark:text-gray-400 hidden"
+                            id="theme-toggle-light-icon">light_mode</span>
+                    </button>
+                    <button id="mobile-menu-button"
+                        class="md:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+                        aria-label="Menu">
+                        <span class="material-icons text-gray-600 dark:text-gray-400">menu</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu"
+                class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                <a href="education.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Education</a>
+                <a href="experience.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Experience</a>
+                <a href="publications.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Publications</a>
+                <a href="tutorials.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Tutorials</a>
+                <a href="projects.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-5xl mx-auto my-8 px-4 opacity-0 transition-opacity duration-500 ease-in-out" id="profile">
+    <div class="bg-white dark:bg-gray-800 card elevation-1 p-6 md:p-8 ">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+            <img src=https://media.licdn.com/dms/image/v2/D5603AQGSQlfl9vWxmA/profile-displayphoto-shrink_200_200/B56ZUhmNU1GQAY-/0/1740025419686?e=1748476800&amp;v=beta&amp;t=iEb2U8gKpBaYEGyzHsygi8O_mDM5Sh5BtgJyUdIXq7s alt="Profile Picture"
+            class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-white dark:border-gray-700
+            shadow-md">
+            <div class="flex-1 text-center md:text-left space-y-4">
+                <div>
+                    <h1 class="text-3xl font-medium mb-1 text-gray-900 dark:text-white">
+                        Tapas Rout
+                    </h1>
+                    <p class="text-lg text-gray-600 dark:text-gray-400"><span>
+                            Doctoral Researcher
+                        </span>, <span>
+                            IIT Bhubaneswar
+                        </span></p>
+                </div>
+                <div id="interests" class="flex flex-wrap justify-center md:justify-start gap-2">
+                    
+                        <span
+                            class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-3 py-1 rounded-full text-sm">
+                            High-Performance Computing
+                        </span>
+                        
+                        <span
+                            class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-3 py-1 rounded-full text-sm">
+                            ASIC/FPGA Design
+                        </span>
+                        
+                        <span
+                            class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-3 py-1 rounded-full text-sm">
+                            Computer Vision
+                        </span>
+                        
+                        <span
+                            class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-3 py-1 rounded-full text-sm">
+                            Artificial Intelligence
+                        </span>
+                        
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-6">
+                    <a href=#
+                        class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700
+                        dark:text-gray-200 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        data-link="github">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href=#
+                        class="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900 text-blue-700
+                        dark:text-blue-200 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors"
+                        data-link="googleScholar">
+                        <i class="fas fa-graduation-cap"></i> Scholar
+                    </a>
+                    <a href=#
+                        class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full
+                        hover:bg-blue-700 transition-colors"
+                        data-link="linkedin">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                    <a href=https://asicbytes.github.io
+                        class="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900 text-green-700
+                        dark:text-green-200 rounded-full hover:bg-green-100 dark:hover:bg-green-800
+                        transition-colors"
+                        data-link="website">
+                        <i class="fas fa-globe"></i> Website
+                    </a>
+                    <a href=your.email@example.com
+                        class="flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900 text-red-700
+                        dark:text-red-200 rounded-full hover:bg-red-100 dark:hover:bg-red-800 transition-colors"
+                        data-link="email">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Projects Section -->
+<section class="py-8 opacity-0 transition-opacity duration-500 ease-in-out" id="project">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="mb-6">
+            <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">My Projects</h2>
+            <p class="text-gray-600 dark:text-gray-400">Recent work I've completed or am currently working on</p>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="flex overflow-x-auto pb-2 mb-4 hide-scrollbar">
+            <button
+                class="category-btn active whitespace-nowrap mr-2 px-4 py-1 rounded-full bg-primary text-white text-sm"
+                data-filter="all">All</button>
+            
+                <button
+                    class="category-btn whitespace-nowrap mr-2 px-4 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm"
+                    data-filter="web">
+                    Web
+                </button>
+                
+                <button
+                    class="category-btn whitespace-nowrap mr-2 px-4 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm"
+                    data-filter="mobile">
+                    Mobile
+                </button>
+                
+                <button
+                    class="category-btn whitespace-nowrap mr-2 px-4 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm"
+                    data-filter="design">
+                    Design
+                </button>
+                
+
+        </div>
+
+        <!-- Project List -->
+        <div class="space-y-3" id="project-list">
+            
+                <div class="project-item bg-white dark:bg-gray-800 rounded-lg elevation-1 p-3 transition-all duration-200"
+                    data-category="web">
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900 flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="material-icons text-primary">
+                                web
+                            </span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">
+                                    React Dashboard Application
+                                </h3>
+                                <span
+                                    class="bg-primary text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">
+                                    Completed
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
+                                A responsive admin dashboard with data visualization and user management
+                            </p>
+                        </div>
+                        <button
+                            class="ml-4 text-primary hover:bg-gray-100 dark:hover:bg-gray-700 p-1 rounded-full flex-shrink-0">
+                            <span class="material-icons">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-item bg-white dark:bg-gray-800 rounded-lg elevation-1 p-3 transition-all duration-200"
+                    data-category="mobile">
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 rounded-full bg-green-50 dark:bg-green-900 flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="material-icons text-green-600 dark:text-green-400">
+                                smartphone
+                            </span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">
+                                    Flutter E-Commerce App
+                                </h3>
+                                <span
+                                    class="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">
+                                    In Progress
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
+                                Cross-platform mobile application with Firebase backend and payment integration
+                            </p>
+                        </div>
+                        <button
+                            class="ml-4 text-primary hover:bg-gray-100 dark:hover:bg-gray-700 p-1 rounded-full flex-shrink-0">
+                            <span class="material-icons">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-item bg-white dark:bg-gray-800 rounded-lg elevation-1 p-3 transition-all duration-200"
+                    data-category="design">
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 rounded-full bg-purple-50 dark:bg-purple-900 flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="material-icons text-purple-600 dark:text-purple-400">
+                                brush
+                            </span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">
+                                    Brand Identity System
+                                </h3>
+                                <span
+                                    class="bg-primary text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">
+                                    Completed
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
+                                Complete visual identity including logo, color palette, and usage guidelines
+                            </p>
+                        </div>
+                        <button
+                            class="ml-4 text-primary hover:bg-gray-100 dark:hover:bg-gray-700 p-1 rounded-full flex-shrink-0">
+                            <span class="material-icons">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+                
+
+
+                    <div class="mt-4 text-right">
+                        <a href="projects.html"
+                            class="inline-flex items-center text-primary hover:text-blue-700 font-medium">
+                            View all projects
+                            <span class="material-icons ml-1 text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+        </div>
+
+</section>
+                <div id="education" class="max-w-5xl mx-auto my-8 px-6 opacity-0 transition-opacity duration-500 ease-in-out">
+
+  <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Education</h1>
+  <p class="text-gray-600 dark:text-gray-400 mb-6">Academic background and learning experiences</p>
+  <div class="space-y-4" id="educationList">
+    <!-- Education items will be inserted here -->
+    
+      
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm education-card card">
+          <div class="flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <img src="https://via.placeholder.com/50" alt="IIT Bhubaneswar Logo"
+                class="w-12 h-12 object-cover rounded-full flex-shrink-0 border border-gray-200 dark:border-gray-700 p-0.5">
+              <div class="flex-grow min-w-0">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white truncate">
+                  PhD in SoC Design
+                </h3>
+                <div class="flex flex-wrap justify-between items-center">
+                  <p class="text-primary dark:text-blue-400 font-medium">
+                    IIT Bhubaneswar
+                  </p>
+                  <span class="text-gray-600 dark:text-gray-400 text-sm">
+                    Jan 2025 - Dec 2029
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+              Focusing on advanced System-on-Chip architectures for low-power and high-performance computing...
+            </p>
+          </div>
+        </div>
+        
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm education-card card">
+          <div class="flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <img src="https://via.placeholder.com/50" alt="XYZ University Logo"
+                class="w-12 h-12 object-cover rounded-full flex-shrink-0 border border-gray-200 dark:border-gray-700 p-0.5">
+              <div class="flex-grow min-w-0">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white truncate">
+                  B.Tech in ECE
+                </h3>
+                <div class="flex flex-wrap justify-between items-center">
+                  <p class="text-primary dark:text-blue-400 font-medium">
+                    XYZ University
+                  </p>
+                  <span class="text-gray-600 dark:text-gray-400 text-sm">
+                    Aug 2012 - May 2016
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+              Specialized in VLSI design with a focus on digital and mixed-signal circuits...
+            </p>
+          </div>
+        </div>
+        
+          
+  </div>
+</div>
+                    <!-- Main Content -->
+
+<div id="experience" class="max-w-5xl mx-auto my-8 px-6 opacity-0 transition-opacity duration-500 ease-in-out">
+
+  <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Experience</h1>
+  <p class="text-gray-600 dark:text-gray-400 mb-6">Key milestones and roles in my career path</p>
+  <div class="space-y-4" id="experienceList">
+    <!-- Experience items will be inserted here -->
+    
+      
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm experience-card card">
+          <div class="flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="IIT Bhubaneswar Logo"
+                class="w-12 h-12 object-cover rounded-full flex-shrink-0 border border-gray-200 dark:border-gray-700 p-0.5">
+              <div class="flex-grow min-w-0">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white truncate">
+                  Junior Research Fellow
+                </h3>
+                <div class="flex flex-wrap justify-between items-center">
+                  <p class="text-primary dark:text-blue-400 font-medium">
+                    IIT Bhubaneswar
+                  </p>
+                  <span class="text-gray-600 dark:text-gray-400 text-sm">
+                    Apr 2024 - Apr 2025
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed ml-15">
+              Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications...
+            </p>
+          </div>
+        </div>
+        
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm experience-card card">
+          <div class="flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="XYZ Company Logo"
+                class="w-12 h-12 object-cover rounded-full flex-shrink-0 border border-gray-200 dark:border-gray-700 p-0.5">
+              <div class="flex-grow min-w-0">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white truncate">
+                  Summer Intern
+                </h3>
+                <div class="flex flex-wrap justify-between items-center">
+                  <p class="text-primary dark:text-blue-400 font-medium">
+                    XYZ Company
+                  </p>
+                  <span class="text-gray-600 dark:text-gray-400 text-sm">
+                    May 2024 - Jul 2024
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed ml-15">
+              Worked on the development of high-speed communication protocols for embedded systems...
+            </p>
+          </div>
+        </div>
+        
+          
+  </div>
+</div>
+                    <div id="publication" class="max-w-5xl mx-auto my-8 px-6 opacity-0 transition-opacity duration-500 ease-in-out">
+    <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Publications</h1>
+    <p class="text-gray-600 dark:text-gray-400 mb-6">Key research works published in reputed journals and conferences
+    </p>
+
+    <!-- Search and Filter Controls -->
+    <div class="mb-8">
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-grow">
+                <div class="relative">
+                    <input type="text" id="publication-search" placeholder="Search publications..."
+                        class="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                    <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+                </div>
+            </div>
+            <div class="flex-shrink-0">
+                <select id="year-filter"
+                    class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                    <!-- Year options will be populated dynamically -->
+                    <option value="all">All Years</option>
+                    
+                    
+                      <option value="2025">2025</option>
+                    
+                      <option value="2024">2024</option>
+                    
+                      <option value="2023">2023</option>
+                    
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="space-y-4" id="publicationsList">
+        
+            
+            
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm publication-card card" data-year="2025" data-title="advanced soc architectures for low-power ai applications" data-authors="aarav sharma tapas rout kunal reddy neha bansal">
+                <div class="flex flex-col">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white break-words">Advanced SoC Architectures for Low-Power AI Applications</h3>
+                  
+                    <p class="text-accent dark:text-red-400 mt-1 font-medium text-sm">some award</p>
+                  
+                  <p class="text-gray-700 dark:text-gray-300 mt-1 break-words text-sm">
+                    Aarav Sharma, &lt;span class=&#34;font-medium text-primary dark:text-blue-400&#34;&gt;Tapas Rout&lt;/span&gt;, Kunal Reddy, Neha Bansal
+                  </p>
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
+                    <em class="text-gray-600 dark:text-gray-400 text-sm">IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 2025</em>
+                    <div class="flex space-x-4">
+                      
+                        <a href="https://example.com/paper1" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>
+                      
+                      
+                        <a href="https://github.com/asicbytes/soc-ai-lowpower" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                      
+                      
+                        <a href="https://example.com/presentation1" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="Presentation"><i class="fa-solid fa-file-powerpoint" aria-hidden="true"></i></a>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm publication-card card" data-year="2024" data-title="energy-efficient fpga designs for edge computing" data-authors="yashwant pillai pooja saxena abhishek menon shruti ghosh">
+                <div class="flex flex-col">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white break-words">Energy-Efficient FPGA Designs for Edge Computing</h3>
+                  
+                  <p class="text-gray-700 dark:text-gray-300 mt-1 break-words text-sm">
+                    Yashwant Pillai, Pooja Saxena, Abhishek Menon, Shruti Ghosh
+                  </p>
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
+                    <em class="text-gray-600 dark:text-gray-400 text-sm">ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED), 2024</em>
+                    <div class="flex space-x-4">
+                      
+                        <a href="https://example.com/paper2" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>
+                      
+                      
+                        <a href="https://github.com/asicbytes/fpga-edge-computing" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm publication-card card" data-year="2024" data-title="novel interconnect technologies for next-generation socs" data-authors="yashwant pillai pooja saxena abhishek menon shruti ghosh">
+                <div class="flex flex-col">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white break-words">Novel Interconnect Technologies for Next-Generation SoCs</h3>
+                  
+                  <p class="text-gray-700 dark:text-gray-300 mt-1 break-words text-sm">
+                    Yashwant Pillai, Pooja Saxena, Abhishek Menon, Shruti Ghosh
+                  </p>
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
+                    <em class="text-gray-600 dark:text-gray-400 text-sm">Design, Automation &amp; Test in Europe Conference &amp; Exhibition (DATE), 2024</em>
+                    <div class="flex space-x-4">
+                      
+                        <a href="https://example.com/paper3" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>
+                      
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm publication-card card" data-year="2023" data-title="optimization techniques for energy-efficient soc designs in iot applications" data-authors="yashwant pillai pooja saxena abhishek menon shruti ghosh">
+                <div class="flex flex-col">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white break-words">Optimization Techniques for Energy-Efficient SoC Designs in IoT Applications</h3>
+                  
+                  <p class="text-gray-700 dark:text-gray-300 mt-1 break-words text-sm">
+                    Yashwant Pillai, Pooja Saxena, Abhishek Menon, Shruti Ghosh
+                  </p>
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2 gap-2">
+                    <em class="text-gray-600 dark:text-gray-400 text-sm">IEEE Internet of Things Journal, 2023</em>
+                    <div class="flex space-x-4">
+                      
+                        <a href="https://example.com/paper4" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="PDF"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>
+                      
+                      
+                        <a href="https://github.com/asicbytes/iot-soc-optimization" class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" target="_blank" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          
+    </div>
+
+    <!-- No results message -->
+    <div id="no-results" class="hidden text-center py-8">
+        <p class="text-gray-600 dark:text-gray-400">No publications match your search criteria.</p>
+    </div>
+</div>
+
+
+  
+  <script>
+    function filterPublications() {
+      const searchTerm = document.getElementById('publication-search').value.toLowerCase();
+      const yearFilter = document.getElementById('year-filter').value;
+      const publicationElements = document.querySelectorAll('#publicationsList > div');
+      let visibleCount = 0;
+      
+      publicationElements.forEach(element => {
+        const year = element.getAttribute('data-year');
+        const title = element.getAttribute('data-title');
+        const authors = element.getAttribute('data-authors');
+        
+        const matchesSearch = searchTerm === '' || 
+                              title.includes(searchTerm) || 
+                              authors.includes(searchTerm);
+        const matchesYear = yearFilter === 'all' || year === yearFilter;
+        
+        if (matchesSearch && matchesYear) {
+          element.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          element.classList.add('hidden');
+        }
+      });
+      
+      document.getElementById('no-results').classList.toggle('hidden', visibleCount > 0);
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('publication-search').addEventListener('input', filterPublications);
+      document.getElementById('year-filter').addEventListener('change', filterPublications);
+      
+      setTimeout(() => {
+        document.getElementById('publication').classList.remove('opacity-0');
+      }, 100);
+    });
+  </script>
+  
+                    <section class="bg-white dark:bg-gray-900 py-8">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Tutorials</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-6">Educational content and learning resources</p>
+      
+      <!-- Search and Filter Controls -->
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="flex-grow">
+            <div class="relative">
+              <input type="text" id="tutorial-search" placeholder="Search tutorials..." class="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+            </div>
+          </div>
+          <div class="flex-shrink-0">
+            <select id="category-filter" class="bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="all">All Categories</option>
+              
+                <option value="programming">programming</option>
+              
+                <option value="hardware">hardware</option>
+              
+                <option value="architecture">architecture</option>
+              
+                <option value="ml-hardware">ml-hardware</option>
+              
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Categories with Collapsible Sections -->
+      <div class="space-y-6" id="tutorial-container">
+        
+          <!-- Category Section -->
+          <div class="tutorial-category" data-category="programming">
+            <div class="flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 rounded-t-lg cursor-pointer category-header">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white">programming</h3>
+              <span class="material-icons text-gray-500 dark:text-gray-400 transform transition-transform">expand_more</span>
+            </div>
+            <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50 rounded-b-lg p-4 category-content">
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                
+                  <li class="tutorial-item" data-tags="python,basics,advanced">
+                    <a href="tutorials/python-basics.html" class="flex items-start hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+                      <span class="material-icons text-primary dark:text-blue-400 mr-3 mt-0.5">code</span>
+                      <div>
+                        <h4 class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">Python Video Tutorial Series: From Basics to Advanced</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Learn Python programming from scratch with practical examples and exercises</p>
+                      </div>
+                    </a>
+                  </li>
+                
+                  <li class="tutorial-item" data-tags="verilog,fpga,hardware">
+                    <a href="tutorials/verilog-fpga.html" class="flex items-start hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+                      <span class="material-icons text-primary dark:text-blue-400 mr-3 mt-0.5">code</span>
+                      <div>
+                        <h4 class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">Verilog Tutorial and An Introduction to FPGA</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Master Verilog HDL and learn how to implement designs on FPGAs</p>
+                      </div>
+                    </a>
+                  </li>
+                
+                  <li class="tutorial-item" data-tags="c,programming,basics">
+                    <a href="tutorials/c-programming.html" class="flex items-start hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+                      <span class="material-icons text-primary dark:text-blue-400 mr-3 mt-0.5">code</span>
+                      <div>
+                        <h4 class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">A Quick Introduction to C Programming</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Essential C programming concepts for hardware engineers</p>
+                      </div>
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+        
+          <!-- Category Section -->
+          <div class="tutorial-category" data-category="hardware">
+            <div class="flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 rounded-t-lg cursor-pointer category-header">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white">hardware</h3>
+              <span class="material-icons text-gray-500 dark:text-gray-400 transform transition-transform">expand_more</span>
+            </div>
+            <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50 rounded-b-lg p-4 category-content">
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                
+                  <li class="tutorial-item" data-tags="asic,rtl,gds,design">
+                    <a href="tutorials/asic-design.html" class="flex items-start hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+                      <span class="material-icons text-green-600 dark:text-green-400 mr-3 mt-0.5">memory</span>
+                      <div>
+                        <h4 class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">ASIC Design Flow: From RTL to GDS</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Complete guide to the ASIC design process from specification to tape-out</p>
+                      </div>
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+        
+          <!-- Category Section -->
+          <div class="tutorial-category" data-category="architecture">
+            <div class="flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 rounded-t-lg cursor-pointer category-header">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white">architecture</h3>
+              <span class="material-icons text-gray-500 dark:text-gray-400 transform transition-transform">expand_more</span>
+            </div>
+            <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50 rounded-b-lg p-4 category-content">
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                
+                  <li class="tutorial-item" data-tags="risc-v,architecture,cpu">
+                    <a href="tutorials/risc-v-basics.html" class="flex items-start hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+                      <span class="material-icons text-purple-600 dark:text-purple-400 mr-3 mt-0.5">developer_board</span>
+                      <div>
+                        <h4 class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">RISC-V Architecture Fundamentals</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Understanding the open-source RISC-V instruction set architecture</p>
+                      </div>
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+        
+          <!-- Category Section -->
+          <div class="tutorial-category" data-category="ml-hardware">
+            <div class="flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 rounded-t-lg cursor-pointer category-header">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white">ml-hardware</h3>
+              <span class="material-icons text-gray-500 dark:text-gray-400 transform transition-transform">expand_more</span>
+            </div>
+            <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50 rounded-b-lg p-4 category-content">
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                
+                  <li class="tutorial-item" data-tags="neural-networks,fpga,ml,ai">
+                    <a href="tutorials/nn-fpga.html" class="flex items-start hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+                      <span class="material-icons text-red-600 dark:text-red-400 mr-3 mt-0.5">psychology</span>
+                      <div>
+                        <h4 class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">Implementing Neural Networks on FPGAs</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Step-by-step guide to deploying neural networks on FPGA hardware</p>
+                      </div>
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+        
+        
+        <!-- JavaScript for filtering and toggling -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Toggle category content
+            const categoryHeaders = document.querySelectorAll('.category-header');
+            categoryHeaders.forEach(header => {
+              header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.material-icons');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+              });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('tutorial-search');
+            searchInput.addEventListener('input', filterTutorials);
+            
+            // Category filter
+            const categoryFilter = document.getElementById('category-filter');
+            categoryFilter.addEventListener('change', filterTutorials);
+            
+            function filterTutorials() {
+              const searchTerm = searchInput.value.toLowerCase();
+              const category = categoryFilter.value;
+              
+              const tutorialItems = document.querySelectorAll('.tutorial-item');
+              const categories = document.querySelectorAll('.tutorial-category');
+              
+              // First hide/show categories based on filter
+              categories.forEach(cat => {
+                const categoryValue = cat.getAttribute('data-category');
+                if (category === 'all' || category === categoryValue) {
+                  cat.classList.remove('hidden');
+                } else {
+                  cat.classList.add('hidden');
+                }
+              });
+              
+              // Then filter individual tutorials based on search
+              tutorialItems.forEach(item => {
+                const tags = item.getAttribute('data-tags');
+                const title = item.querySelector('h4').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                
+                if (searchTerm === '' || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm) || 
+                    tags.includes(searchTerm)) {
+                  item.classList.remove('hidden');
+                } else {
+                  item.classList.add('hidden');
+                }
+              });
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+  
+                    <div class="max-w-5xl mx-auto my-8 px-6">
+    <div id="projects" class="opacity-0 transition-opacity duration-500 ease-in-out">
+        <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Projects</h1>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Recent work I've completed or am currently working on</p>
+        
+        <!-- Search and Filter Controls -->
+        <div class="mb-8">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-grow">
+                    <div class="relative">
+                        <input type="text" id="project-search" placeholder="Search projects..." class="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <select id="project-category-filter" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <option value="all">All Categories</option>
+                        <option value="hardware">Hardware Design</option>
+                        <option value="software">Software</option>
+                        <option value="fpga">FPGA</option>
+                        <option value="ml">Machine Learning</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="space-y-4" id="projectsList">
+            <!-- Project items using EJS -->
+            
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="hardware" 
+                         data-title="risc-v based processor design" 
+                         data-description="designed and implemented a 5-stage pipelined risc-v processor with branch prediction and cache memory on fpga" 
+                         data-technologies="verilog fpga risc-v computer architecture">
+                        <a href="https://github.com/username/riscv-processor" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-blue-600 dark:text-blue-400">memory</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">RISC-V Based Processor Design</h3>
+                                        <span class="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Completed</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Designed and implemented a 5-stage pipelined RISC-V processor with branch prediction and cache memory on FPGA</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Verilog</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">FPGA</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">RISC-V</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Computer Architecture</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="ml" 
+                         data-title="machine learning hardware accelerator" 
+                         data-description="developed a custom hardware accelerator for convolutional neural networks with 5x performance improvement over cpu implementations" 
+                         data-technologies="systemverilog asic machine learning neural networks">
+                        <a href="https://github.com/username/ml-accelerator" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-orange-600 dark:text-orange-400">psychology</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">Machine Learning Hardware Accelerator</h3>
+                                        <span class="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Completed</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Developed a custom hardware accelerator for convolutional neural networks with 5x performance improvement over CPU implementations</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">SystemVerilog</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">ASIC</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Machine Learning</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Neural Networks</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="hardware" 
+                         data-title="low-power iot sensor node" 
+                         data-description="created an ultra-low power sensor node for environmental monitoring with 6-month battery life" 
+                         data-technologies="embedded c arm cortex-m0 pcb design iot">
+                        <a href="" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-blue-600 dark:text-blue-400">memory</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">Low-Power IoT Sensor Node</h3>
+                                        <span class="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">In Progress</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Created an ultra-low power sensor node for environmental monitoring with 6-month battery life</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Embedded C</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">ARM Cortex-M0</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">PCB Design</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">IoT</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="software" 
+                         data-title="python framework for hardware verification" 
+                         data-description="built a python-based verification framework for asic designs that reduced verification time by 40%" 
+                         data-technologies="python systemverilog uvm verification">
+                        <a href="https://github.com/username/hw-verify" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-green-600 dark:text-green-400">code</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">Python Framework for Hardware Verification</h3>
+                                        <span class="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Completed</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Built a Python-based verification framework for ASIC designs that reduced verification time by 40%</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Python</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">SystemVerilog</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">UVM</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Verification</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="fpga" 
+                         data-title="fpga-based image processing system" 
+                         data-description="implemented real-time image processing algorithms on fpga with hdmi input/output capability" 
+                         data-technologies="vhdl fpga image processing computer vision">
+                        <a href="https://github.com/username/fpga-image-proc" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-purple-600 dark:text-purple-400">developer_board</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">FPGA-Based Image Processing System</h3>
+                                        <span class="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Completed</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Implemented real-time image processing algorithms on FPGA with HDMI input/output capability</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">VHDL</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">FPGA</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Image Processing</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Computer Vision</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="ml" 
+                         data-title="approximate computing for neural networks" 
+                         data-description="researched and implemented approximate computing techniques for neural network inference, achieving 3x energy efficiency" 
+                         data-technologies="c++ tensorflow fpga approximate computing">
+                        <a href="" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-orange-600 dark:text-orange-400">psychology</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">Approximate Computing for Neural Networks</h3>
+                                        <span class="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">In Progress</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Researched and implemented approximate computing techniques for neural network inference, achieving 3x energy efficiency</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">C++</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">TensorFlow</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">FPGA</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Approximate Computing</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="software" 
+                         data-title="open-source eda tool development" 
+                         data-description="contributing to open-source eda tools for analog circuit design and simulation" 
+                         data-technologies="c++ python circuit design eda">
+                        <a href="https://github.com/username/open-eda" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-green-600 dark:text-green-400">code</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">Open-Source EDA Tool Development</h3>
+                                        <span class="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">In Progress</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Contributing to open-source EDA tools for analog circuit design and simulation</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">C++</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Python</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Circuit Design</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">EDA</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="hardware" 
+                         data-title="custom cpu core for edge ai" 
+                         data-description="designing a specialized cpu core optimized for edge ai applications with custom instructions" 
+                         data-technologies="systemverilog asic computer architecture ai">
+                        <a href="" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons text-blue-600 dark:text-blue-400">memory</span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate">Custom CPU Core for Edge AI</h3>
+                                        <span class="bg-gray-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Planned</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Designing a specialized CPU core optimized for edge AI applications with custom instructions</p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">SystemVerilog</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">ASIC</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">Computer Architecture</span>
+                                        
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">AI</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+            
+        </div>
+        
+        <!-- No results message -->
+        <div id="no-results" class="hidden text-center py-8">
+            <p class="text-gray-600 dark:text-gray-400">No projects match your search criteria.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Client-side filtering functionality
+    function filterProjects() {
+        const searchTerm = document.getElementById('project-search').value.toLowerCase();
+        const categoryFilter = document.getElementById('project-category-filter').value;
+        const projectElements = document.querySelectorAll('#projectsList > div');
+        let visibleCount = 0;
+        
+        projectElements.forEach(element => {
+            const category = element.getAttribute('data-category');
+            const title = element.getAttribute('data-title');
+            const description = element.getAttribute('data-description');
+            const technologies = element.getAttribute('data-technologies');
+            
+            // Check if project matches both search term and category filter
+            const matchesSearch = searchTerm === '' || 
+                                 title.includes(searchTerm) || 
+                                 description.includes(searchTerm) ||
+                                 technologies.includes(searchTerm);
+            const matchesCategory = categoryFilter === 'all' || category === categoryFilter;
+            
+            if (matchesSearch && matchesCategory) {
+                element.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                element.classList.add('hidden');
+            }
+        });
+        
+        // Show/hide no results message
+        document.getElementById('no-results').classList.toggle('hidden', visibleCount > 0);
+    }
+
+    // Add event listeners for filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('project-search').addEventListener('input', filterProjects);
+        document.getElementById('project-category-filter').addEventListener('change', filterProjects);
+        
+        // Fade in the projects section
+        setTimeout(() => {
+            document.getElementById('projects').classList.remove('opacity-0');
+        }, 100);
+    });
+</script>
+
+        </main>
+
+
+
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-gray-800 py-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <small class="text-gray-500 dark:text-gray-400">
+                    <i class="fa-regular fa-copyright"></i>
+                    Tapas Rout
+                        2025 . All rights are reserved.
+                </small>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            setTimeout(() => {
+                document.getElementById('profile').classList.remove('opacity-0');
+            }, 100);
+            // Fade in the experience section
+            setTimeout(() => {
+                document.getElementById('project').classList.remove('opacity-0');
+            }, 200);
+            // Fade in the experience section
+            setTimeout(() => {
+                document.getElementById('experience').classList.remove('opacity-0');
+            }, 300);
+
+            setTimeout(() => {
+                document.getElementById('education').classList.remove('opacity-0');
+            }, 400);
+
+            setTimeout(() => {
+                document.getElementById('publication').classList.remove('opacity-0');
+            }, 400);
+
+            // Get all category buttons and project items
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            // Add click event listeners to category buttons
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.remove('bg-primary');
+                        btn.classList.remove('text-white');
+                        btn.classList.add('bg-gray-200');
+                        btn.classList.add('dark:bg-gray-700');
+                        btn.classList.add('text-gray-700');
+                        btn.classList.add('dark:text-gray-300');
+                    });
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    this.classList.add('bg-primary');
+                    this.classList.add('text-white');
+                    this.classList.remove('bg-gray-200');
+                    this.classList.remove('dark:bg-gray-700');
+                    this.classList.remove('text-gray-700');
+                    this.classList.remove('dark:text-gray-300');
+
+                    // Get the filter value
+                    const filter = this.getAttribute('data-filter');
+
+                    // Show/hide projects based on filter
+                    projectItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Add hover effect to project items
+            projectItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    this.classList.add('elevation-2');
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    this.classList.remove('elevation-2');
+                });
+            });
+        });
+
+        // Add this CSS to hide scrollbar but allow scrolling
+        document.head.insertAdjacentHTML('beforeend', `
+        <style>
+          .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+          }
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+          }
+          
+          .elevation-1 {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          }
+          
+          .elevation-2 {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+          }
+        </style>
+      `);
+    </script>
+
+    <script>
+        function toggleMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeToggleIcons();
+        }
+
+        function updateThemeToggleIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.getElementById('theme-toggle-dark-icon').classList.toggle('hidden', isDark);
+            document.getElementById('theme-toggle-light-icon').classList.toggle('hidden', !isDark);
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            updateThemeToggleIcons();
+        }
+
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            initTheme();
+            initMobileMenu();
+            document.getElementById('theme-toggle').addEventListener('click', toggleMode);
+        });
+    </script>
+</body>
+
+</html>

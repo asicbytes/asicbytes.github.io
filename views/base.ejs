@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= website %>
+    </title>
+    <!-- Add preload for critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap"
+        as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Google Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1a73e8', // Google blue
+                        secondary: '#34a853', // Google green
+                        accent: '#ea4335', // Google red
+                        neutral: '#fbbc05', // Google yellow
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Core styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .btn-primary {
+            @apply bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition-all duration-200;
+        }
+
+        .brand-name {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a73e8;
+            letter-spacing: -0.5px;
+        }
+
+        .dark .brand-name {
+            color: #8ab4f8;
+        }
+
+        .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        }
+
+        .dark .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+
+        .card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .dark .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-card {
+            border-left: 4px solid #1a73e8;
+        }
+
+        .dark .experience-card {
+            border-left: 4px solid #8ab4f8;
+        }
+
+        .card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+        }
+
+        .dark .card:hover {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .publication-card {
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.2s ease;
+         }
+         
+         .dark .publication-card {
+            border-left: 4px solid #8ab4f8;
+         }
+         
+         .publication-card:hover {
+            transform: translateY(-2px);
+         }
+
+         .project-card {
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.2s ease;
+        }
+        
+        .dark .project-card {
+            border-left: 4px solid #8ab4f8;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body
+    class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
+
+
+    <div class="content-container flex flex-col min-h-screen">
+        <!-- Navigation Bar -->
+        <nav class="bg-white dark:bg-gray-800 elevation-1 sticky top-0 z-10">
+            <div class="max-w-5xl mx-auto flex justify-between items-center px-4 h-16">
+                <a href="/" class="brand-name">
+                    <%= website %>
+                </a>
+                <div class="hidden md:flex space-x-6" id="desktop-menu">
+                    <a href="education.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Education</a>
+                    <a href="experience.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Experience</a>
+                    <a href="publications.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Publications</a>
+                    <a href="tutorials.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Tutorials</a>
+                    <a href="projects.html"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Projects</a>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+                        aria-label="Toggle dark mode">
+                        <span class="material-icons text-gray-600 dark:text-gray-400"
+                            id="theme-toggle-dark-icon">dark_mode</span>
+                        <span class="material-icons text-gray-600 dark:text-gray-400 hidden"
+                            id="theme-toggle-light-icon">light_mode</span>
+                    </button>
+                    <button id="mobile-menu-button"
+                        class="md:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+                        aria-label="Menu">
+                        <span class="material-icons text-gray-600 dark:text-gray-400">menu</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu"
+                class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                <a href="education.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Education</a>
+                <a href="experience.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Experience</a>
+                <a href="publications.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Publications</a>
+                <a href="tutorials.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Tutorials</a>
+                <a href="projects.html"
+                    class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 bg-gray-50 dark:bg-gray-900">
+            <%- include(index) %>
+                <%- include(education) %>
+                    <%- include(experience) %>
+                    <%- include(publication) %>
+                    <%- include(tutorial) %>
+                    <%- include(project) %>
+        </main>
+
+
+
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-gray-800 py-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <small class="text-gray-500 dark:text-gray-400">
+                    <i class="fa-regular fa-copyright"></i>
+                    <%= name %>
+                        <%= new Date().getFullYear() %> . All rights are reserved.
+                </small>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            setTimeout(() => {
+                document.getElementById('profile').classList.remove('opacity-0');
+            }, 100);
+            // Fade in the experience section
+            setTimeout(() => {
+                document.getElementById('project').classList.remove('opacity-0');
+            }, 200);
+            // Fade in the experience section
+            setTimeout(() => {
+                document.getElementById('experience').classList.remove('opacity-0');
+            }, 300);
+
+            setTimeout(() => {
+                document.getElementById('education').classList.remove('opacity-0');
+            }, 400);
+
+            setTimeout(() => {
+                document.getElementById('publication').classList.remove('opacity-0');
+            }, 400);
+
+            // Get all category buttons and project items
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            // Add click event listeners to category buttons
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.remove('bg-primary');
+                        btn.classList.remove('text-white');
+                        btn.classList.add('bg-gray-200');
+                        btn.classList.add('dark:bg-gray-700');
+                        btn.classList.add('text-gray-700');
+                        btn.classList.add('dark:text-gray-300');
+                    });
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    this.classList.add('bg-primary');
+                    this.classList.add('text-white');
+                    this.classList.remove('bg-gray-200');
+                    this.classList.remove('dark:bg-gray-700');
+                    this.classList.remove('text-gray-700');
+                    this.classList.remove('dark:text-gray-300');
+
+                    // Get the filter value
+                    const filter = this.getAttribute('data-filter');
+
+                    // Show/hide projects based on filter
+                    projectItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Add hover effect to project items
+            projectItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    this.classList.add('elevation-2');
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    this.classList.remove('elevation-2');
+                });
+            });
+        });
+
+        // Add this CSS to hide scrollbar but allow scrolling
+        document.head.insertAdjacentHTML('beforeend', `
+        <style>
+          .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+          }
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+          }
+          
+          .elevation-1 {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          }
+          
+          .elevation-2 {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+          }
+        </style>
+      `);
+    </script>
+
+    <script>
+        function toggleMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeToggleIcons();
+        }
+
+        function updateThemeToggleIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.getElementById('theme-toggle-dark-icon').classList.toggle('hidden', isDark);
+            document.getElementById('theme-toggle-light-icon').classList.toggle('hidden', !isDark);
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            updateThemeToggleIcons();
+        }
+
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            initTheme();
+            initMobileMenu();
+            document.getElementById('theme-toggle').addEventListener('click', toggleMode);
+        });
+    </script>
+</body>
+
+</html>

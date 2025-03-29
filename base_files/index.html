@@ -414,6 +414,7 @@ document.head.insertAdjacentHTML('beforeend', `
             fetch('data.json')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data)
                     resumeData = data;
                     initPage();
                 })

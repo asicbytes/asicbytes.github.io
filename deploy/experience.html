@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsicBytes</title>
+    <!-- Add preload for critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Google Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1a73e8', // Google blue
+                        secondary: '#34a853', // Google green
+                        accent: '#ea4335', // Google red
+                        neutral: '#fbbc05', // Google yellow
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        
+        /* Core styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Google Sans', sans-serif;
+        }
+        
+        main {
+            flex: 1;
+        }
+        
+        .btn-primary {
+            @apply bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition-all duration-200;
+        }
+        
+        .brand-name {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a73e8;
+            letter-spacing: -0.5px;
+        }
+        
+        .dark .brand-name {
+            color: #8ab4f8;
+        }
+        
+        .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        }
+        
+        .dark .elevation-1 {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+
+        .card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  transform: translateY(-2px);
+}
+
+.dark .card:hover {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+}
+
+.experience-card {
+  border-left: 4px solid #1a73e8;
+}
+
+.dark .experience-card {
+  border-left: 4px solid #8ab4f8;
+}
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
+
+
+    <div class="content-container flex flex-col min-h-screen">
+        <!-- Navigation Bar -->
+        <nav class="bg-white dark:bg-gray-800 elevation-1 sticky top-0 z-10">
+            <div class="max-w-5xl mx-auto flex justify-between items-center px-4 h-16">
+                <a href="/" class="brand-name">AsicBytes</a>
+                <div class="hidden md:flex space-x-6" id="desktop-menu">
+                    <a href="education.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Education</a>
+                    <a href="experience.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Experience</a>
+                    <a href="publications.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Publications</a>
+                    <a href="tutorials.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Tutorials</a>
+                    <a href="projects.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 font-medium">Projects</a>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none" aria-label="Toggle dark mode">
+                        <span class="material-icons text-gray-600 dark:text-gray-400" id="theme-toggle-dark-icon">dark_mode</span>
+                        <span class="material-icons text-gray-600 dark:text-gray-400 hidden" id="theme-toggle-light-icon">light_mode</span>
+                    </button>
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none" aria-label="Menu">
+                        <span class="material-icons text-gray-600 dark:text-gray-400">menu</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                <a href="education.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Education</a>
+                <a href="experience.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Experience</a>
+                <a href="publications.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Publications</a>
+                <a href="tutorials.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Tutorials</a>
+                <a href="projects.html" class="block py-3 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <!-- Main Content -->
+<main class="flex-1 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-5xl mx-auto my-8 px-6">
+    <div id="experience" class="opacity-0 transition-opacity duration-500 ease-in-out">
+      <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Experience</h1>
+      <p class="text-gray-600 dark:text-gray-400 mb-6">Key milestones and roles in my career path</p>
+      <div class="space-y-4" id="experienceList">
+        <!-- Experience items will be inserted here -->
+        
+          
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm experience-card card">
+              <div class="flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="IIT Bhubaneswar Logo" class="w-12 h-12 object-cover rounded-full flex-shrink-0 border border-gray-200 dark:border-gray-700 p-0.5">
+                  <div class="flex-grow min-w-0">
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white truncate">Junior Research Fellow</h3>
+                    <div class="flex flex-wrap justify-between items-center">
+                      <p class="text-primary dark:text-blue-400 font-medium">IIT Bhubaneswar</p>
+                      <span class="text-gray-600 dark:text-gray-400 text-sm">Apr 2024 - Apr 2025</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed ml-15">Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications...</p>
+              </div>
+            </div>
+          
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-lg shadow-sm experience-card card">
+              <div class="flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="XYZ Company Logo" class="w-12 h-12 object-cover rounded-full flex-shrink-0 border border-gray-200 dark:border-gray-700 p-0.5">
+                  <div class="flex-grow min-w-0">
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white truncate">Summer Intern</h3>
+                    <div class="flex flex-wrap justify-between items-center">
+                      <p class="text-primary dark:text-blue-400 font-medium">XYZ Company</p>
+                      <span class="text-gray-600 dark:text-gray-400 text-sm">May 2024 - Jul 2024</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed ml-15">Worked on the development of high-speed communication protocols for embedded systems...</p>
+              </div>
+            </div>
+          
+        
+      </div>
+    </div>
+  </div>
+</main>
+        
+        
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-gray-800 py-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <small class="text-gray-500 dark:text-gray-400">
+                    <i class="fa-regular fa-copyright"></i> Tapas Rout 2025 . All rights are reserved.
+                </small>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+  // Fade in the experience section
+  setTimeout(() => {
+    document.getElementById('experience').classList.remove('opacity-0');
+  }, 100);
+</script>
+
+    <script>
+        function toggleMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeToggleIcons();
+        }
+    
+        function updateThemeToggleIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.getElementById('theme-toggle-dark-icon').classList.toggle('hidden', isDark);
+            document.getElementById('theme-toggle-light-icon').classList.toggle('hidden', !isDark);
+        }
+    
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            updateThemeToggleIcons();
+        }
+    
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+        
+
+    
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            initMobileMenu();
+            document.getElementById('theme-toggle').addEventListener('click', toggleMode);
+        });
+    </script>
+</body>
+</html>

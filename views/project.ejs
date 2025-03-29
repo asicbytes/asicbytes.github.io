@@ -1,0 +1,136 @@
+<div class="max-w-5xl mx-auto my-8 px-6">
+    <div id="projects" class="opacity-0 transition-opacity duration-500 ease-in-out">
+        <h1 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Projects</h1>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Recent work I've completed or am currently working on</p>
+        
+        <!-- Search and Filter Controls -->
+        <div class="mb-8">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-grow">
+                    <div class="relative">
+                        <input type="text" id="project-search" placeholder="Search projects..." class="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <select id="project-category-filter" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <option value="all">All Categories</option>
+                        <option value="hardware">Hardware Design</option>
+                        <option value="software">Software</option>
+                        <option value="fpga">FPGA</option>
+                        <option value="ml">Machine Learning</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="space-y-4" id="projectsList">
+            <!-- Project items using EJS -->
+            <% if (projects && Array.isArray(projects)) { %>
+                <% projects.forEach(function(project) { %>
+                    <% 
+                    // Get category icon
+                    let categoryIcon = 'memory';
+                    let iconColor = 'text-blue-600 dark:text-blue-400';
+                    
+                    if (project.category === 'software') {
+                        categoryIcon = 'code';
+                        iconColor = 'text-green-600 dark:text-green-400';
+                    } else if (project.category === 'fpga') {
+                        categoryIcon = 'developer_board';
+                        iconColor = 'text-purple-600 dark:text-purple-400';
+                    } else if (project.category === 'ml') {
+                        categoryIcon = 'psychology';
+                        iconColor = 'text-orange-600 dark:text-orange-400';
+                    }
+                    
+                    // Get status badge
+                    let statusBadge = '';
+                    if (project.status === 'completed') {
+                        statusBadge = '<span class="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Completed</span>';
+                    } else if (project.status === 'in-progress') {
+                        statusBadge = '<span class="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">In Progress</span>';
+                    } else if (project.status === 'planned') {
+                        statusBadge = '<span class="bg-gray-500 text-white text-xs px-2 py-0.5 rounded-full ml-2 flex-shrink-0">Planned</span>';
+                    }
+                    %>
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm project-card card" 
+                         data-category="<%= project.category %>" 
+                         data-title="<%= project.title.toLowerCase() %>" 
+                         data-description="<%= project.description.toLowerCase() %>" 
+                         data-technologies="<%= project.technologies.join(' ').toLowerCase() %>">
+                        <a href="<%= project.link %>" class="block text-inherit no-underline" target="_blank">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="material-icons <%= iconColor %>"><%= categoryIcon %></span>
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white truncate"><%= project.title %></h3>
+                                        <%- statusBadge %>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2"><%= project.description %></p>
+                                    <div class="flex mt-2 flex-wrap gap-1">
+                                        <% project.technologies.forEach(function(tech) { %>
+                                            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded"><%= tech %></span>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+        
+        <!-- No results message -->
+        <div id="no-results" class="hidden text-center py-8">
+            <p class="text-gray-600 dark:text-gray-400">No projects match your search criteria.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Client-side filtering functionality
+    function filterProjects() {
+        const searchTerm = document.getElementById('project-search').value.toLowerCase();
+        const categoryFilter = document.getElementById('project-category-filter').value;
+        const projectElements = document.querySelectorAll('#projectsList > div');
+        let visibleCount = 0;
+        
+        projectElements.forEach(element => {
+            const category = element.getAttribute('data-category');
+            const title = element.getAttribute('data-title');
+            const description = element.getAttribute('data-description');
+            const technologies = element.getAttribute('data-technologies');
+            
+            // Check if project matches both search term and category filter
+            const matchesSearch = searchTerm === '' || 
+                                 title.includes(searchTerm) || 
+                                 description.includes(searchTerm) ||
+                                 technologies.includes(searchTerm);
+            const matchesCategory = categoryFilter === 'all' || category === categoryFilter;
+            
+            if (matchesSearch && matchesCategory) {
+                element.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                element.classList.add('hidden');
+            }
+        });
+        
+        // Show/hide no results message
+        document.getElementById('no-results').classList.toggle('hidden', visibleCount > 0);
+    }
+
+    // Add event listeners for filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('project-search').addEventListener('input', filterProjects);
+        document.getElementById('project-category-filter').addEventListener('change', filterProjects);
+        
+        // Fade in the projects section
+        setTimeout(() => {
+            document.getElementById('projects').classList.remove('opacity-0');
+        }, 100);
+    });
+</script>

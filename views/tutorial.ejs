@@ -1,0 +1,114 @@
+<section class="bg-white dark:bg-gray-900 py-8">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Tutorials</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-6">Educational content and learning resources</p>
+      
+      <!-- Search and Filter Controls -->
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="flex-grow">
+            <div class="relative">
+              <input type="text" id="tutorial-search" placeholder="Search tutorials..." class="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+            </div>
+          </div>
+          <div class="flex-shrink-0">
+            <select id="category-filter" class="bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="all">All Categories</option>
+              <% tutorialData.forEach(function(category) { %>
+                <option value="<%= category.category %>"><%= category.category %></option>
+              <% }); %>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Categories with Collapsible Sections -->
+      <div class="space-y-6" id="tutorial-container">
+        <% tutorialData.forEach(function(category) { %>
+          <!-- Category Section -->
+          <div class="tutorial-category" data-category="<%= category.category %>">
+            <div class="flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 rounded-t-lg cursor-pointer category-header">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white"><%= category.category %></h3>
+              <span class="material-icons text-gray-500 dark:text-gray-400 transform transition-transform">expand_more</span>
+            </div>
+            <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50 rounded-b-lg p-4 category-content">
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                <% category.tutorials.forEach(function(tutorial) { %>
+                  <li class="tutorial-item" data-tags="<%= tutorial.tags %>">
+                    <a href="<%= tutorial.url %>" class="flex items-start hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+                      <span class="material-icons <%= tutorial.iconColor %> mr-3 mt-0.5"><%= tutorial.icon %></span>
+                      <div>
+                        <h4 class="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"><%= tutorial.title %></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1"><%= tutorial.description %></p>
+                      </div>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+          </div>
+        <% }); %>
+        
+        <!-- JavaScript for filtering and toggling -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Toggle category content
+            const categoryHeaders = document.querySelectorAll('.category-header');
+            categoryHeaders.forEach(header => {
+              header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.material-icons');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+              });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('tutorial-search');
+            searchInput.addEventListener('input', filterTutorials);
+            
+            // Category filter
+            const categoryFilter = document.getElementById('category-filter');
+            categoryFilter.addEventListener('change', filterTutorials);
+            
+            function filterTutorials() {
+              const searchTerm = searchInput.value.toLowerCase();
+              const category = categoryFilter.value;
+              
+              const tutorialItems = document.querySelectorAll('.tutorial-item');
+              const categories = document.querySelectorAll('.tutorial-category');
+              
+              // First hide/show categories based on filter
+              categories.forEach(cat => {
+                const categoryValue = cat.getAttribute('data-category');
+                if (category === 'all' || category === categoryValue) {
+                  cat.classList.remove('hidden');
+                } else {
+                  cat.classList.add('hidden');
+                }
+              });
+              
+              // Then filter individual tutorials based on search
+              tutorialItems.forEach(item => {
+                const tags = item.getAttribute('data-tags');
+                const title = item.querySelector('h4').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                
+                if (searchTerm === '' || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm) || 
+                    tags.includes(searchTerm)) {
+                  item.classList.remove('hidden');
+                } else {
+                  item.classList.add('hidden');
+                }
+              });
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+  
