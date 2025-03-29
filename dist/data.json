@@ -1,0 +1,175 @@
+{
+  "name": "Tapas Rout",
+  "brandName": "AsicBytes",
+  "profilePicture": "https://media.licdn.com/dms/image/v2/D5603AQGSQlfl9vWxmA/profile-displayphoto-shrink_200_200/B56ZUhmNU1GQAY-/0/1740025419686?e=1748476800&v=beta&t=iEb2U8gKpBaYEGyzHsygi8O_mDM5Sh5BtgJyUdIXq7s",
+  "title": "Doctoral Researcher",
+  "organization": "IIT Bhubaneswar",
+  "interests": [
+  	"High-Performance Computing",
+  	"ASIC/FPGA Design",
+  	"Computer Vision",
+  	"Artificial Intelligence"
+   ],
+  "email": "your.email@example.com",
+  "socialLinks": {
+    "website": "https://asicbytes.github.io",
+    "linkedin": "#",
+    "github": "#",
+    "googleScholar": "#"
+  },
+  "skills": [
+    {
+      "category": "Languages", 
+      "values": ["C", "C++", "Python", "Verilog", "VHDL"]
+    },
+    {
+      "category": "Tools", 
+      "values": ["Vivado", "ModelSim", "Quartus", "MATLAB", "LaTeX"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "PhD in SoC Design",
+      "institution": "IIT Bhubaneswar",
+      "period": "Jan 2025 - Dec 2029",
+      "logo": "https://via.placeholder.com/50",
+      "description": "Focusing on advanced System-on-Chip architectures for low-power and high-performance computing..."
+    },
+    {
+      "degree": "B.Tech in ECE",
+      "institution": "XYZ University",
+      "period": "Aug 2012 - May 2016",
+      "logo": "https://via.placeholder.com/50",
+      "description": "Specialized in VLSI design with a focus on digital and mixed-signal circuits..."
+    }
+  ],
+  "experience": [
+    {
+      "position": "Junior Research Fellow",
+      "company": "IIT Bhubaneswar",
+      "period": "Apr 2024 - Apr 2025",
+      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+      "description": "Conducting research on optimized System-on-Chip (SoC) architectures for low-power applications..."
+    },
+    {
+      "position": "Summer Intern",
+      "company": "XYZ Company",
+      "period": "May 2024 - Jul 2024",
+      "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+      "description": "Worked on the development of high-speed communication protocols for embedded systems..."
+    }
+  ],
+  "projects": [
+    {
+      "title": "RISC-V Based Processor Design",
+      "description": "Designed and implemented a 5-stage pipelined RISC-V processor with branch prediction and cache memory on FPGA",
+      "category": "hardware",
+      "status": "completed",
+      "technologies": ["Verilog", "FPGA", "RISC-V", "Computer Architecture"],
+      "link": "https://github.com/username/riscv-processor"
+    },
+    {
+      "title": "Machine Learning Hardware Accelerator",
+      "description": "Developed a custom hardware accelerator for convolutional neural networks with 5x performance improvement over CPU implementations",
+      "category": "ml",
+      "status": "completed",
+      "technologies": ["SystemVerilog", "ASIC", "Machine Learning", "Neural Networks"],
+      "link": "https://github.com/username/ml-accelerator"
+    },
+    {
+      "title": "Low-Power IoT Sensor Node",
+      "description": "Created an ultra-low power sensor node for environmental monitoring with 6-month battery life",
+      "category": "hardware",
+      "status": "in-progress",
+      "technologies": ["Embedded C", "ARM Cortex-M0", "PCB Design", "IoT"],
+      "link": null
+    },
+    {
+      "title": "Python Framework for Hardware Verification",
+      "description": "Built a Python-based verification framework for ASIC designs that reduced verification time by 40%",
+      "category": "software",
+      "status": "completed",
+      "technologies": ["Python", "SystemVerilog", "UVM", "Verification"],
+      "link": "https://github.com/username/hw-verify"
+    },
+    {
+      "title": "FPGA-Based Image Processing System",
+      "description": "Implemented real-time image processing algorithms on FPGA with HDMI input/output capability",
+      "category": "fpga",
+      "status": "completed",
+      "technologies": ["VHDL", "FPGA", "Image Processing", "Computer Vision"],
+      "link": "https://github.com/username/fpga-image-proc"
+    },
+    {
+      "title": "Approximate Computing for Neural Networks",
+      "description": "Researched and implemented approximate computing techniques for neural network inference, achieving 3x energy efficiency",
+      "category": "ml",
+      "status": "in-progress",
+      "technologies": ["C++", "TensorFlow", "FPGA", "Approximate Computing"],
+      "link": null
+    },
+    {
+      "title": "Open-Source EDA Tool Development",
+      "description": "Contributing to open-source EDA tools for analog circuit design and simulation",
+      "category": "software",
+      "status": "in-progress",
+      "technologies": ["C++", "Python", "Circuit Design", "EDA"],
+      "link": "https://github.com/username/open-eda"
+    },
+    {
+      "title": "Custom CPU Core for Edge AI",
+      "description": "Designing a specialized CPU core optimized for edge AI applications with custom instructions",
+      "category": "hardware",
+      "status": "planned",
+      "technologies": ["SystemVerilog", "ASIC", "Computer Architecture", "AI"],
+      "link": null
+    }
+  ],
+  "publications": [
+    {
+      "authors": [ "Aarav Sharma", "Tapas Rout", "Kunal Reddy", "Neha Bansal"],
+      "title": "Advanced SoC Architectures for Low-Power AI Applications",
+      "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+      "year": 2025,
+      "award": "some award",
+      "links": {
+        "paper": "https://example.com/paper1",
+        "github": "https://github.com/asicbytes/soc-ai-lowpower",
+        "presentation": "https://example.com/presentation1"
+      }
+    },
+    {
+      "authors": ["Yashwant Pillai", "Pooja Saxena", "Abhishek Menon", "Shruti Ghosh"],
+      "title": "Energy-Efficient FPGA Designs for Edge Computing",
+      "venue": "ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED)",
+      "year": 2024,
+      "award": "",
+      "links": {
+        "paper": "https://example.com/paper2",
+        "github": "https://github.com/asicbytes/fpga-edge-computing"
+      }
+    },
+    {
+      "authors": ["Yashwant Pillai", "Pooja Saxena", "Abhishek Menon", "Shruti Ghosh"],
+      "title": "Novel Interconnect Technologies for Next-Generation SoCs",
+      "venue": "Design, Automation & Test in Europe Conference & Exhibition (DATE)",
+      "year": 2024,
+      "award": "",
+      "links": {
+        "paper": "https://example.com/paper3"
+      }
+    },
+    {
+      "authors": ["Yashwant Pillai", "Pooja Saxena", "Abhishek Menon", "Shruti Ghosh"],
+      "title": "Optimization Techniques for Energy-Efficient SoC Designs in IoT Applications",
+      "venue": "IEEE Internet of Things Journal",
+      "year": 2023,
+      "award": "",
+      "links": {
+        "paper": "https://example.com/paper4",
+        "github": "https://github.com/asicbytes/iot-soc-optimization"
+      }
+    }
+  ]
+}
+
