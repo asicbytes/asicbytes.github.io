@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger the deployment when pushing to the `main` branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # Checks out the repository's code
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # Set the Node.js version you are using
+
+    - name: Install dependencies
+      run: npm install  # Install your dependencies (if you have a package.json)
+
+    - name: Build static files
+      run: npm run generate  # Run your build command to generate the static files
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4  # GitHub Action for deploying to GitHub Pages
+      with:
+        branch: gh-pages  # The branch to deploy to
+        folder: dist  # The folder with your built static files
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
