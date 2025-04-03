@@ -140,7 +140,6 @@
 
 .calendar-scroll-wrapper {
   padding-bottom: 10px;
-
 }
 
 
@@ -247,7 +246,7 @@ function initGitHubCalendar() {
   
 // Add the calendar HTML structure
 calendarContainer.innerHTML = `
-  <div class="graph-title text-center text-gray-800 dark:text-gray-200 mb-4">Contribution Graph</div>
+  <div class="graph-title text-center text-gray-800 dark:text-gray-200 mb-4">Dashboard</div>
   <div class="calendar-container">
     <div class="months-row" id="months-row"></div>
     <div class="calendar-scroll-wrapper">
@@ -310,6 +309,7 @@ calendarContainer.innerHTML = `
   position: relative;
   padding-top: 20px;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
     .months-row {
       position: absolute;
