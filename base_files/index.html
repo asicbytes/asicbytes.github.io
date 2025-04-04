@@ -829,7 +829,7 @@ function createStackedBarChart(startDate, endDate) {
       background: 'transparent',
       events: {
       	dataPointSelection: function(event, chartContext, config) {
-      		console.log("Name  = " + config.seriesIndex)
+      		console.log("Name  = " +config.seriesIndex)
       	}
       }
     },
@@ -1000,10 +1000,852 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
+<script>
+
+function initLatestUpdates(updates) {
+  // Create a section for the latest updates
+  const updatesSection = document.createElement('section');
+  updatesSection.className = 'py-8';
+  updatesSection.innerHTML = `
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-6">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Latest Updates</h2>
+        <p class="text-gray-600 dark:text-gray-400">Recent news and developments from my work</p>
+      </div>
+      
+      <div class="space-y-4" id="updates-list">
+        <!-- Updates will be populated here -->
+      </div>
+      
+      <!-- View All Updates Link -->
+      <div class="mt-4 text-right">
+        <a href="updates.html" class="inline-flex items-center text-primary hover:text-blue-700 font-medium">
+          View all updates
+          <span class="material-icons ml-1 text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  `;
+  
+  // Insert the section before the Projects section
+  const projectsSection = document.querySelector('section.py-8:last-of-type');
+  if (projectsSection) {
+    projectsSection.parentNode.insertBefore(updatesSection, projectsSection);
+  } else {
+    document.querySelector('main').appendChild(updatesSection);
+  }
+  
+  // Get the updates list container
+  const updatesList = updatesSection.querySelector('#updates-list');
+  
+  // Loop through updates and create elements
+  updates.forEach(update => {
+    const updateItem = document.createElement('div');
+    updateItem.className = 'bg-white dark:bg-gray-800 rounded-lg elevation-1 p-4';
+    
+    // Get icon based on update type
+    const iconMap = {
+      'publication': { icon: 'new_releases', bgClass: 'bg-blue-50 dark:bg-blue-900', iconClass: 'text-primary' },
+      'code': { icon: 'code', bgClass: 'bg-purple-50 dark:bg-purple-900', iconClass: 'text-purple-600 dark:text-purple-400' },
+      'event': { icon: 'event', bgClass: 'bg-amber-50 dark:bg-amber-900', iconClass: 'text-amber-600 dark:text-amber-400' },
+      'award': { icon: 'emoji_events', bgClass: 'bg-green-50 dark:bg-green-900', iconClass: 'text-green-600 dark:text-green-400' }
+    };
+    
+    const iconInfo = iconMap[update.type] || iconMap['publication'];
+    
+    // Create the HTML structure
+    updateItem.innerHTML = `
+      <div class="flex items-start">
+        <div class="w-10 h-10 rounded-full ${iconInfo.bgClass} flex items-center justify-center mr-4 flex-shrink-0">
+          <span class="material-icons ${iconInfo.iconClass}">${iconInfo.icon}</span>
+        </div>
+        <div class="flex-grow">
+          <div class="flex flex-wrap items-center gap-2 mb-1">
+            <h3 class="text-base font-medium text-gray-900 dark:text-white">${update.title}</h3>
+            ${update.isNew ? '<span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-2 py-0.5 rounded-full">New</span>' : ''}
+            <span class="text-xs text-gray-500 dark:text-gray-400 ml-auto">${update.date}</span>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">${update.description}</p>
+          <a href="${update.link}" class="inline-flex items-center text-sm text-primary hover:text-blue-700">
+            ${update.linkText}
+            <span class="material-icons text-sm ml-1">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    `;
+    
+    updatesList.appendChild(updateItem);
+  });
+}
+
+// Example usage:
+document.addEventListener('DOMContentLoaded', function() {
+  // You can either include this in your data.json file
+  // or load it separately
+  const updatesData = [
+    {
+      type: "publication",
+      title: "Published New Research Paper",
+      isNew: true,
+      date: "April 2, 2025",
+      description: "My paper on \"Efficient Neural Network Architectures for Edge Devices\" was accepted at the International Conference on Machine Learning.",
+      link: "#",
+      linkText: "Read more"
+    },
+    {
+      type: "code",
+      title: "Open-Sourced New Library",
+      isNew: false,
+      date: "March 15, 2025",
+      description: "Released TensorFlow.js wrapper for simplified deployment of ML models in browser environments with 40% smaller footprint.",
+      link: "#",
+      linkText: "View on GitHub"
+    },
+    {
+      type: "event",
+      title: "Upcoming Workshop",
+      isNew: false,
+      date: "February 28, 2025",
+      description: "I'll be hosting a workshop on \"Building Scalable Web Applications with React and GraphQL\" at the Frontend Developer Conference.",
+      link: "#",
+      linkText: "Register now"
+    }
+  ];
+  
+  initLatestUpdates(updatesData);
+});
+
+</script>
+
+
+
+<script>
+function initLatestUpdates(updates) {
+  // Create a section for the latest updates
+  const updatesSection = document.createElement('section');
+  updatesSection.className = 'py-8';
+  updatesSection.innerHTML = `
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-6">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Latest Updates</h2>
+        <p class="text-gray-600 dark:text-gray-400">Recent news and developments from my work</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="updates-list">
+        <!-- Updates will be populated here -->
+      </div>
+      
+      <!-- View All Updates Link -->
+      <div class="mt-4 text-right">
+        <a href="updates.html" class="inline-flex items-center text-primary hover:text-blue-700 font-medium">
+          View all updates
+          <span class="material-icons ml-1 text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  `;
+  
+  // Insert the section before the Projects section
+  const projectsSection = document.querySelector('section.py-8:last-of-type');
+  if (projectsSection) {
+    projectsSection.parentNode.insertBefore(updatesSection, projectsSection);
+  } else {
+    document.querySelector('main').appendChild(updatesSection);
+  }
+  
+  // Get the updates list container
+  const updatesList = updatesSection.querySelector('#updates-list');
+  
+  // Loop through updates and create elements
+  updates.forEach(update => {
+    const updateItem = document.createElement('div');
+    updateItem.className = 'bg-white dark:bg-gray-800 rounded-lg elevation-1 p-3 hover:elevation-2 transition-all duration-200';
+    
+    // Get icon based on update type
+    const iconMap = {
+      'publication': { icon: 'new_releases', bgClass: 'bg-blue-50 dark:bg-blue-900', iconClass: 'text-primary' },
+      'code': { icon: 'code', bgClass: 'bg-purple-50 dark:bg-purple-900', iconClass: 'text-purple-600 dark:text-purple-400' },
+      'event': { icon: 'event', bgClass: 'bg-amber-50 dark:bg-amber-900', iconClass: 'text-amber-600 dark:text-amber-400' },
+      'award': { icon: 'emoji_events', bgClass: 'bg-green-50 dark:bg-green-900', iconClass: 'text-green-600 dark:text-green-400' }
+    };
+    
+    const iconInfo = iconMap[update.type] || iconMap['publication'];
+    
+    // Create the HTML structure with more compact layout
+    updateItem.innerHTML = `
+      <div class="flex items-start h-full">
+        <div class="w-8 h-8 rounded-full ${iconInfo.bgClass} flex items-center justify-center mr-2 flex-shrink-0">
+          <span class="material-icons ${iconInfo.iconClass} text-sm">${iconInfo.icon}</span>
+        </div>
+        <div class="flex-grow min-w-0">
+          <div class="flex flex-wrap items-center gap-1 mb-1">
+            <h3 class="text-sm font-medium text-gray-900 dark:text-white truncate">${update.title}</h3>
+            ${update.isNew ? '<span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-1.5 py-0.5 rounded-full">New</span>' : ''}
+          </div>
+          <p class="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 mb-1">${update.description}</p>
+          <div class="flex justify-between items-center mt-auto">
+            <span class="text-xs text-gray-500 dark:text-gray-400">${update.date}</span>
+            <a href="${update.link}" class="inline-flex items-center text-xs text-primary hover:text-blue-700">
+              ${update.linkText}
+              <span class="material-icons text-xs ml-0.5">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    updatesList.appendChild(updateItem);
+  });
+}
+
+</script>
+
+<script>
+
+function initSkillsTreemap() {
+  // Create a section for the skills visualization
+  const skillsSection = document.createElement('section');
+  skillsSection.className = 'py-8';
+  skillsSection.innerHTML = `
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-6">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">My Tech Stack</h2>
+        <p class="text-gray-600 dark:text-gray-400">Technologies and tools I work with</p>
+      </div>
+      
+      <div class="bg-white dark:bg-gray-800 rounded-lg elevation-1 p-6">
+        <div id="skills-treemap" class="w-full h-[500px]"></div>
+        <div id="skills-legend" class="mt-4 flex flex-wrap justify-center"></div>
+      </div>
+    </div>
+  `;
+  
+  // Insert the section after the profile section
+  const profileSection = document.querySelector('#profile').closest('.max-w-5xl').parentNode;
+  const nextSection = profileSection.nextElementSibling;
+  if (nextSection) {
+    profileSection.parentNode.insertBefore(skillsSection, nextSection);
+  } else {
+    document.querySelector('main').appendChild(skillsSection);
+  }
+  
+  // Create the treemap visualization
+  createTreemap();
+}
+
+function createTreemap() {
+  // Check if ApexCharts is loaded
+  if (typeof ApexCharts === 'undefined') {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/apexcharts';
+    script.onload = initTreemap;
+    document.head.appendChild(script);
+  } else {
+    initTreemap();
+  }
+}
+
+function initTreemap() {
+  // Sample data for skills and technologies
+  const skillsData = [
+    { x: 'JavaScript', y: 85, category: 'Languages' },
+    { x: 'Python', y: 80, category: 'Languages' },
+    { x: 'C++', y: 75, category: 'Languages' },
+    { x: 'Java', y: 70, category: 'Languages' },
+    { x: 'TypeScript', y: 65, category: 'Languages' },
+    { x: 'Go', y: 55, category: 'Languages' },
+    { x: 'Rust', y: 40, category: 'Languages' },
+    { x: 'React', y: 90, category: 'Web' },
+    { x: 'Node.js', y: 85, category: 'Web' },
+    { x: 'HTML/CSS', y: 80, category: 'Web' },
+    { x: 'Vue.js', y: 65, category: 'Web' },
+    { x: 'Angular', y: 60, category: 'Web' },
+    { x: 'TensorFlow', y: 75, category: 'Data Science' },
+    { x: 'PyTorch', y: 70, category: 'Data Science' },
+    { x: 'Pandas', y: 85, category: 'Data Science' },
+    { x: 'Scikit-learn', y: 80, category: 'Data Science' },
+    { x: 'FPGA', y: 70, category: 'Hardware' },
+    { x: 'Verilog', y: 65, category: 'Hardware' },
+    { x: 'ASIC Design', y: 60, category: 'Hardware' },
+    { x: 'PCB Design', y: 50, category: 'Hardware' },
+    { x: 'Docker', y: 80, category: 'DevOps' },
+    { x: 'Kubernetes', y: 70, category: 'DevOps' },
+    { x: 'AWS', y: 75, category: 'DevOps' },
+    { x: 'CI/CD', y: 65, category: 'DevOps' },
+    { x: 'Git', y: 90, category: 'Tools' },
+    { x: 'VS Code', y: 85, category: 'Tools' },
+    { x: 'Jupyter', y: 80, category: 'Tools' },
+    { x: 'Docker', y: 75, category: 'Tools' },
+    { x: 'Linux', y: 85, category: 'Tools' }
+  ];
+  
+  // Define color mapping for categories
+  const colorMap = {
+    'Languages': '#4285F4',    // Google Blue
+    'Web': '#EA4335',          // Google Red
+    'Data Science': '#FBBC05', // Google Yellow
+    'Hardware': '#34A853',     // Google Green
+    'DevOps': '#8AB4F8',       // Light Blue
+    'Tools': '#F6AEA9'         // Light Red
+  };
+  
+  // Group data by category
+  const groupedData = [];
+  
+  // Get unique categories
+  const categories = [...new Set(skillsData.map(item => item.category))];
+  
+  // Create data structure for treemap
+  categories.forEach(category => {
+    const items = skillsData.filter(item => item.category === category);
+    
+    // Add category as parent
+    groupedData.push({
+      x: category,
+      y: items.reduce((sum, item) => sum + item.y, 0),
+      fillColor: colorMap[category]
+    });
+    
+    // Add items with category as parent
+    items.forEach(item => {
+      groupedData.push({
+        x: item.x,
+        y: item.y,
+        fillColor: colorMap[category] + (Math.round(item.y / 20) * 20).toString(16),
+        category: category
+      });
+    });
+  });
+  
+  // Check if dark mode is enabled
+  const isDarkMode = document.documentElement.classList.contains('dark');
+  
+  // ApexCharts options
+  const options = {
+    series: [{
+      data: groupedData
+    }],
+    chart: {
+      height: 500,
+      type: 'treemap',
+      toolbar: {
+        show: false
+      },
+      fontFamily: '"Google Sans", sans-serif',
+      background: 'transparent',
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 800,
+        animateGradually: {
+          enabled: true,
+          delay: 150
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 350
+        }
+      }
+    },
+    legend: {
+      show: false
+    },
+    title: {
+      text: 'My Skills & Technologies',
+      align: 'center',
+      style: {
+        fontSize: '18px',
+        fontWeight: '500',
+        color: isDarkMode ? '#e8eaed' : '#333'
+      }
+    },
+    dataLabels: {
+      enabled: true,
+      style: {
+        fontSize: '12px',
+        fontWeight: 'normal',
+        colors: ['#fff']
+      },
+      formatter: function(text, op) {
+        return [text, op.value]
+      },
+      offsetY: -4
+    },
+    tooltip: {
+      enabled: true,
+      theme: isDarkMode ? 'dark' : 'light',
+      style: {
+        fontSize: '12px',
+        fontFamily: '"Google Sans", sans-serif'
+      },
+      y: {
+        formatter: function(value) {
+          return value + '% proficiency';
+        }
+      }
+    },
+    plotOptions: {
+      treemap: {
+        distributed: true,
+        enableShades: false
+      }
+    }
+  };
+
+  // Create the chart
+  const chart = new ApexCharts(document.getElementById("skills-treemap"), options);
+  chart.render();
+  
+  // Create legend
+  const legendContainer = document.getElementById('skills-legend');
+  categories.forEach(category => {
+    const legendItem = document.createElement('div');
+    legendItem.className = 'flex items-center mr-4 mb-2';
+    legendItem.innerHTML = `
+      <div class="w-4 h-4 rounded-sm mr-2" style="background-color: ${colorMap[category]}"></div>
+      <span class="text-sm text-gray-700 dark:text-gray-300">${category}</span>
+    `;
+    legendContainer.appendChild(legendItem);
+  });
+  
+  // Update chart on theme change
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.attributeName === "class") {
+        const isDark = document.documentElement.classList.contains('dark');
+        chart.updateOptions({
+          title: {
+            style: {
+              color: isDark ? '#e8eaed' : '#333'
+            }
+          },
+          tooltip: {
+            theme: isDark ? 'dark' : 'light'
+          }
+        });
+      }
+    });
+  });
+  
+  observer.observe(document.documentElement, {attributes: true});
+}
+
+
+
+// Initialize the skills treemap
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.querySelector('main')) {
+    initSkillsTreemap();
+  }
+});
+</script>
+
+<!---- Certifications section -->
+
+<section class="bg-white dark:bg-gray-900 py-8">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Certifications</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-6">Professional certifications and achievements</p>
+    
+    <!-- Search and Filter Controls -->
+    <div class="mb-8">
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-grow">
+          <div class="relative">
+            <input type="text" id="certification-search" placeholder="Search certifications..." class="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-10 pr-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons absolute left-3 top-2 text-gray-500 dark:text-gray-400">search</span>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+          <select id="category-filter" class="bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+            <option value="all">All Categories</option>
+            <option value="cloud">Cloud Computing</option>
+            <option value="ai">Artificial Intelligence</option>
+            <option value="hardware">Hardware Design</option>
+            <option value="security">Cybersecurity</option>
+          </select>
+        </div>
+        <div class="flex-shrink-0">
+          <select id="year-filter" class="bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+            <option value="all">All Years</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Certifications List -->
+    <div id="certifications-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Certifications will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<script>
+// Dummy data in JSON format
+const certificationsData = [
+  {
+    "name": "Google Cloud Professional Cloud Architect",
+    "issuer": "Google Cloud",
+    "date": "2025-03-15",
+    "category": "cloud",
+    "description": "Expertise in designing, developing, and managing robust, secure, scalable, highly available, and dynamic solutions to drive business objectives.",
+    "badge": "https://example.com/gcp-architect-badge.png"
+  },
+  {
+    "name": "AWS Certified Solutions Architect - Professional",
+    "issuer": "Amazon Web Services",
+    "date": "2024-11-30",
+    "category": "cloud",
+    "description": "Advanced knowledge of AWS services and architectures to design and deploy dynamically scalable, highly available applications on AWS.",
+    "badge": "https://example.com/aws-architect-badge.png"
+  },
+  {
+    "name": "TensorFlow Developer Certificate",
+    "issuer": "Google",
+    "date": "2024-07-22",
+    "category": "ai",
+    "description": "Proficiency in using TensorFlow to solve deep learning and ML problems, including building and training neural networks for computer vision and NLP tasks.",
+    "badge": "https://example.com/tensorflow-badge.png"
+  },
+  {
+    "name": "Xilinx Certified FPGA Designer",
+    "issuer": "Xilinx",
+    "date": "2023-09-10",
+    "category": "hardware",
+    "description": "Expertise in designing and implementing complex FPGA-based systems using Xilinx tools and technologies.",
+    "badge": "https://example.com/xilinx-badge.png"
+  },
+  {
+    "name": "Certified Information Systems Security Professional (CISSP)",
+    "issuer": "ISC²",
+    "date": "2022-12-05",
+    "category": "security",
+    "description": "Comprehensive knowledge of information security, covering critical topics such as asset security, security engineering, identity and access management, and software development security.",
+    "badge": "https://example.com/cissp-badge.png"
+  }
+];
+
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('certifications-container');
+  const searchInput = document.getElementById('certification-search');
+  const categoryFilter = document.getElementById('category-filter');
+  const yearFilter = document.getElementById('year-filter');
+
+  function renderCertifications(certifications) {
+    container.innerHTML = '';
+    certifications.forEach(cert => {
+      const certElement = document.createElement('div');
+      certElement.className = 'bg-white dark:bg-gray-800 rounded-lg shadow-md p-6';
+      certElement.innerHTML = `
+        <div class="flex items-start">
+          <img src="${cert.badge}" alt="${cert.name} badge" class="w-16 h-16 object-contain mr-4">
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white">${cert.name}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">${cert.issuer} • ${new Date(cert.date).toLocaleDateString()}</p>
+            <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">${cert.description}</p>
+          </div>
+        </div>
+      `;
+      container.appendChild(certElement);
+    });
+  }
+
+  function filterCertifications() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+    const year = yearFilter.value;
+
+    const filtered = certificationsData.filter(cert => {
+      const matchesSearch = cert.name.toLowerCase().includes(searchTerm) || 
+                            cert.description.toLowerCase().includes(searchTerm);
+      const matchesCategory = category === 'all' || cert.category === category;
+      const matchesYear = year === 'all' || new Date(cert.date).getFullYear().toString() === year;
+
+      return matchesSearch && matchesCategory && matchesYear;
+    });
+
+    renderCertifications(filtered);
+  }
+
+  searchInput.addEventListener('input', filterCertifications);
+  categoryFilter.addEventListener('change', filterCertifications);
+  yearFilter.addEventListener('change', filterCertifications);
+
+  // Initial render
+  renderCertifications(certificationsData);
+});
+</script>
+
+
+
+<script>
+function initEducation() {
+  // Create a section for education
+  const educationSection = document.createElement('section');
+  educationSection.className = 'py-8';
+  educationSection.innerHTML = `
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-6">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Education</h2>
+        <p class="text-gray-600 dark:text-gray-400">My academic journey and qualifications</p>
+      </div>
+      
+     
+      <div class="flex flex-col md:flex-row items-center md:items-center gap-8">
+        <!-- Photo Album (hidden on mobile) -->
+        <div class="hidden md:block md:w-1/2 pr-8 flex justify-center">
+          <div class="space-y-4">
+            <img src="" alt="Stanford University" class="w-full rounded-lg shadow-md">
+          </div>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="md:w-1/2 relative">
+          <!-- Vertical timeline line -->
+          <div class="absolute left-0 h-full w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+          
+          <!-- Timeline items -->
+          <div class="space-y-12">
+            <!-- Education Item 1 -->
+            <div class="relative">
+              <div class="flex items-start">
+                <!-- Timeline dot -->
+                <div class="absolute left-0 w-7 h-7 bg-primary rounded-full border-4 border-white dark:border-gray-800 transform -translate-x-1/2 flex items-center justify-center">
+                  <span class="material-icons text-white text-sm">school</span>
+                </div>
+                
+                <!-- Content -->
+                <div class="pl-10">
+                  <span class="text-sm font-medium text-primary mb-1 block">2018 - 2022</span>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">Ph.D. in Computer Engineering</h3>
+                  <p class="text-base text-gray-800 dark:text-gray-200">Stanford University</p>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Specialized in ASIC design for machine learning acceleration. Thesis on "Energy-Efficient Neural Network Hardware Architectures."</p>
+                  
+                  <!-- Tags -->
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">ASIC Design</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Neural Networks</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Machine Learning</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Education Item 2 -->
+            <div class="relative">
+              <div class="flex items-start">
+                <!-- Timeline dot -->
+                <div class="absolute left-0 w-7 h-7 bg-primary rounded-full border-4 border-white dark:border-gray-800 transform -translate-x-1/2 flex items-center justify-center">
+                  <span class="material-icons text-white text-sm">school</span>
+                </div>
+                
+                <!-- Content -->
+                <div class="pl-10">
+                  <span class="text-sm font-medium text-primary mb-1 block">2016 - 2018</span>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">M.S. in Electrical Engineering</h3>
+                  <p class="text-base text-gray-800 dark:text-gray-200">Massachusetts Institute of Technology</p>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Focus on integrated circuit design and embedded systems. Graduated with honors.</p>
+                  
+                  <!-- Tags -->
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Integrated Circuits</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Embedded Systems</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">VLSI</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Education Item 3 -->
+            <div class="relative">
+              <div class="flex items-start">
+                <!-- Timeline dot -->
+                <div class="absolute left-0 w-7 h-7 bg-primary rounded-full border-4 border-white dark:border-gray-800 transform -translate-x-1/2 flex items-center justify-center">
+                  <span class="material-icons text-white text-sm">school</span>
+                </div>
+                
+                <!-- Content -->
+                <div class="pl-10">
+                  <span class="text-sm font-medium text-primary mb-1 block">2012 - 2016</span>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">B.Tech in Electronics Engineering</h3>
+                  <p class="text-base text-gray-800 dark:text-gray-200">Indian Institute of Technology, Bombay</p>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Graduated with distinction. Recipient of the Institute Silver Medal for academic excellence.</p>
+                  
+                  <!-- Tags -->
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Digital Electronics</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Signal Processing</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Microprocessors</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Insert the section after the profile section
+  const profileSection = document.querySelector('#profile').closest('.max-w-5xl').parentNode;
+  const nextSection = profileSection.nextElementSibling;
+  if (nextSection) {
+    profileSection.parentNode.insertBefore(educationSection, nextSection);
+  } else {
+    document.querySelector('main').appendChild(educationSection);
+  }
+}
+
+// Initialize the education section
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.querySelector('main')) {
+    initEducation();
+  }
+});
+
+</script>
 
 
 
 
+
+
+
+
+<script>
+function initExperience() {
+  // Create a section for experience
+  const experienceSection = document.createElement('section');
+  experienceSection.className = 'py-8';
+  experienceSection.innerHTML = `
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-6">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-2">Experience</h2>
+        <p class="text-gray-600 dark:text-gray-400">My professional journey and work history</p>
+      </div>
+      
+      <div class="flex flex-col md:flex-row items-center md:items-center gap-8">
+        <!-- Photo Album (hidden on mobile) -->
+        <div class="hidden md:block md:w-1/2 pr-8 flex justify-center">
+          <div class="space-y-4">
+            <img src="" alt="Google" class="w-full rounded-lg shadow-md">
+          </div>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="md:w-1/2 relative">
+          <!-- Vertical timeline line -->
+          <div class="absolute left-0 h-full w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+          
+          <!-- Timeline items -->
+          <div class="space-y-12">
+            <!-- Experience Item 1 -->
+            <div class="relative">
+              <div class="flex items-start">
+                <!-- Timeline dot -->
+                <div class="absolute left-0 w-7 h-7 bg-primary rounded-full border-4 border-white dark:border-gray-800 transform -translate-x-1/2 flex items-center justify-center">
+                  <span class="material-icons text-white text-sm">work</span>
+                </div>
+                
+                <!-- Content -->
+                <div class="pl-10">
+                  <span class="text-sm font-medium text-primary mb-1 block">2022 - Present</span>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">Senior Hardware Engineer</h3>
+                  <p class="text-base text-gray-800 dark:text-gray-200">Google AI</p>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Leading the design of custom ASIC accelerators for next-generation AI models. Optimizing hardware architectures for transformer-based neural networks.</p>
+                  
+                  <!-- Tags -->
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">TPU</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Hardware Acceleration</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">AI/ML</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Experience Item 2 -->
+            <div class="relative">
+              <div class="flex items-start">
+                <!-- Timeline dot -->
+                <div class="absolute left-0 w-7 h-7 bg-primary rounded-full border-4 border-white dark:border-gray-800 transform -translate-x-1/2 flex items-center justify-center">
+                  <span class="material-icons text-white text-sm">work</span>
+                </div>
+                
+                <!-- Content -->
+                <div class="pl-10">
+                  <span class="text-sm font-medium text-primary mb-1 block">2020 - 2022</span>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">Hardware Design Engineer</h3>
+                  <p class="text-base text-gray-800 dark:text-gray-200">NVIDIA</p>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Designed and implemented custom circuits for GPU tensor cores. Improved performance and power efficiency of deep learning operations by 35%.</p>
+                  
+                  <!-- Tags -->
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">GPU Architecture</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Tensor Cores</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">CUDA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Experience Item 3 -->
+            <div class="relative">
+              <div class="flex items-start">
+                <!-- Timeline dot -->
+                <div class="absolute left-0 w-7 h-7 bg-primary rounded-full border-4 border-white dark:border-gray-800 transform -translate-x-1/2 flex items-center justify-center">
+                  <span class="material-icons text-white text-sm">work</span>
+                </div>
+                
+                <!-- Content -->
+                <div class="pl-10">
+                  <span class="text-sm font-medium text-primary mb-1 block">2018 - 2020</span>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">Research Intern</h3>
+                  <p class="text-base text-gray-800 dark:text-gray-200">Intel Labs</p>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Researched novel neuromorphic computing architectures. Co-authored 3 papers on energy-efficient hardware for spiking neural networks.</p>
+                  
+                  <!-- Tags -->
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Neuromorphic Computing</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Research</span>
+                    <span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-2 py-1 rounded-full text-xs">Publication</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Insert the section after the education section or profile section
+  const educationSection = document.querySelector('section.py-8');
+  if (educationSection) {
+    educationSection.parentNode.insertBefore(experienceSection, educationSection.nextElementSibling);
+  } else {
+    const profileSection = document.querySelector('#profile').closest('.max-w-5xl').parentNode;
+    const nextSection = profileSection.nextElementSibling;
+    if (nextSection) {
+      profileSection.parentNode.insertBefore(experienceSection, nextSection);
+    } else {
+      document.querySelector('main').appendChild(experienceSection);
+    }
+  }
+}
+
+// Initialize the experience section
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.querySelector('main')) {
+    initExperience();
+  }
+});
+
+</script>
 
 <!-- Projects Section -->
 <section class="py-8">
